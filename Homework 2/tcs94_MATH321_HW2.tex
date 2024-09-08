@@ -1,0 +1,144 @@
+\documentclass[12pt]{article}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\bZ}{{\mathbb{Z}}}
+\newcommand{\bN}{{\mathbb{N}}}
+\newcommand{\bQ}{{\mathbb{Q}}}
+
+% Math and symbol packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{derivative}
+
+% Formatting
+\usepackage{inputenc}
+\usepackage[left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+
+% Actual content
+\begin{document}
+\pagestyle{fancy}
+\setlength{\headheight}{14.49998pt}
+\fancyhead[L]{Trevor Swan}
+\fancyhead[C]{\textbf{MATH321 - HW2}}
+\fancyhead[R]{09/11/24}
+\fancyfoot[C]{\thepage}
+
+% Start Problem 1
+\noindent \textbf{(1.2.8)} Show that for every pair of real numbers $x$ and $y$ such that $x < y$, there exists an irrational number $s$ such that $x < s < y$.
+
+\begin{proof}
+	The set of the rational numbers $\bQ$ is known to be dense in the real numbers $\bR$. This means that given $x,y\in\bR$ and $x<y$, then there exists some rational number $r\in\bQ$ such that $x<r<y$. Note that this is part of the Archimedean property. \newline
+	
+\indent Consider the two real numbers $\frac{x}{\sqrt{2}}$ and $\frac{y}{\sqrt{2}}$. Building off the earlier proofs in this course, it is known that $\sqrt{2}$ is irrational, and that the irrational numbers are a subset of $\bR$. It is also known that $x<y$, so it follows that $\frac{x}{\sqrt{2}} < \frac{y}{\sqrt{2}}$ as $\bR$ is an ordered field. This is settled on Page 26 of \textit{Basic Analysis I: Introduction to Real Analysis, Volume 1.} by Lebl, Jiri. By the density of the rationals in the reals, there exists some $r\in\bQ$ such that $\frac{x}{\sqrt{2}} < r < \frac{y}{\sqrt{2}}$. Now, multiply the expression by $\sqrt{2}$, preserving the ordering though showing a different property. This yields the expression $x < \sqrt{2}r < y$. Both $x$ and $y$ are real numbers, and while $\sqrt{2}r$ is also a real number, it must be proved that it is irrational.
+
+\indent Again, it is known that $r$ is a rational number and $\sqrt{2}$ is an irrational number. Assume to the contrary that $\sqrt{2}r$ is a rational number $q\in\bQ$. In other words, $\sqrt{2}r = q$, where $r,q\in\bQ$. Since $r$ and $q$ are both rational numbers, they can be expressed as $r=\frac{a}{b}$ and $q=\frac{c}{d}$, where $b, q\neq0$ and $a,b,c,d\in\bZ$. Using these ratios, solve for $\sqrt{2}$ from the expression $\sqrt{2}r = q$ as
+
+\begin{equation*}
+	\sqrt{2}=\frac{q}{r}=\frac{\frac{c}{d}}{\frac{a}{b}}=\frac{bc}{ad}
+\end{equation*}
+
+\noindent where $r$ and $q$ are substituted accordingly.
+
+\indent Note that this means $\sqrt{2}=\frac{bc}{ad}$, in which a contradiction is arrived at. Since $a,b,c,d\in\bZ$ and by extension $cd, ab\in\bZ$, then $\sqrt{2}$ must be rational as it can be expressed as a ratio of integers. This contradicts the assumption that $\sqrt{2}$ is irrational. Therefore $\sqrt{2}r$ is irrational.
+
+\indent Choosing $s=\sqrt{2}r$, it is shown that there exists some irrational number $s$ between real numbers $x$ and $y$ given that $a<y$.
+\end{proof} 
+
+\newpage
+
+% Start Problem 2
+\noindent \textbf{(1.2.9)} Let $A$ and $B$ be two nonempty bounded sets of real numbers. Let \\ $C \coloneq \set{a+b : a\in A, b\in B}$. Show that $C$ is a bounded set and that
+
+\begin{align*}
+	\sup C = \sup A + \sup B \quad \text{and} \quad \inf C = \inf A + \inf B.
+\end{align*}
+
+\begin{proof}
+	Since $A$ and $B$ are both bounded and nonempty subsets of the real numbers, then they must have finite bounds which exist. Hence, define the respective bounds as 
+	
+\begin{align*}
+	\inf A = n_a, \sup A = N_A \quad\text{and}\quad \inf B = n_B, \sup B = N_B
+\end{align*}
+
+\noindent In other words, for all $a\in A$ and $b\in B$, $n_a \le a \le N_A$ and $n_B \le b \le N_B$.
+
+\indent For any $c\in C$, there exists an $a\in A$ and $b\in B$ such that $c=a+b$ as given. Since $a \le N_A$ and $b \le N_B$, these inequalities can be added to yield $a + b \le N_A + N_B$. Therefore $c \le N_A + N_B$ and hence $N_A + N_B$ is an upper bound for c. Similarly, since $a \ge n_B$ and $b \ge n_B$, these inequalities can also be added to yield  $a + b \ge n_A + n_B$. Therefore $c \ge n_A + n_B$ and hence $n_A + n_B$ is a lower bound for $C$. Since $C$ has both an upper bound $N_A + N_B$ and a lower bound $n_A + n_B$, it follows that $C$ is a bounded set.
+
+\indent For every $a\in A$ and $b\in B$, $c=a+b$. Since, by the definition of the supremum, $a\le \sup A$ for all $a\in A$ and $b \le \sup B$ for all $b\in B$, the inequalities can be combined to yield $a+b\le \sup A + \sup B$. Hence, every element of $C$ is less than or equal to $\sup A + \sup B$, and it follows that $\sup C \le \sup A + \sup B$.
+
+\indent Now, choose an element $a'\in A$ who's arbitrarily close to $\sup A$ and similarly choose an element $b'\in B$ who's arbitrarily close to $\sup B$. Consider the pair $a', b'$, which yields the sum $c'=a'+b'$. This sum $c'$ will be arbitrarily close to $\sup A + \sup B$. Therefore, it follows that the least upper bound of $C, \sup C$, must be at least $\sup A+\sup B$. Thus, $\sup C \ge \sup A + \sup B$. Consequently $\sup C = \sup A + \sup B$, as both $\sup C \le \sup A + \sup B$ and $\sup C \ge \sup A + \sup B$.
+
+\indent For any $a\in A$ and $b\in B$, $c=a+b$. Since $a\ge \inf A$ for all $a\in A$ and $b\ge\inf B$ for all $b\in B$ by definition, which can be combined to yield $a + b \ge \inf A + \inf B$. Hence, every element of $C$ is greater than or equal to $\inf A + \inf B$, and it follows that $\inf C \ge \inf A + \inf B$.
+
+\indent Similarly to the argument above, choose an element $a'\in A$ who's arbitrarily close to $\inf A$ and similarly choose an element $b'\in B$ who's arbitrarily close to $\inf B$. Consider the pair $a', b'$, which yields the sum $c'=a'+b'$. This sum $c'$ will be arbitrarily close to $\inf A + \inf B$. Therefore, it follows that the greatest lower bound of $C, \inf C$, must be at most $\inf A + \inf B$. Thus, $\inf C \le \inf A + \inf B$. Consequently $\inf C = \inf A + \inf B$, as both $\inf C \ge \inf A + \inf B$ and $\inf C \le \inf A + \inf B$.
+
+\indent In summary, when given two nonempty bounded sets of real numbers, $A$ and $B$ with $C \coloneq \set{a+b : a\in A, b\in B}$, it follows that $C$ is bounded and that
+
+\begin{align*}
+	\sup C = \sup A + \sup B \quad \text{and} \quad \inf C = \inf A + \inf B.
+\end{align*}
+
+\end{proof}
+
+\newpage
+
+% Start Problem 3
+\noindent \textbf{(1.2.12)} Prove \underline{Proposition 1.2.8}. If $S \subset \bR$ is nonempty and bounded above, then for every $\epsilon > 0$ there exists an $x\in S$ such that $(\sup S)-\epsilon < x \le \sup S$.
+
+\begin{proof}
+	Let $M\coloneq\sup S$ be the supremum of $S$. By definition of the supremum, $M$ is the smallest number such that $M$ is an upper bound of $S$ where for all $x \in S$, it holds that $x\le M$.
+	\indent Assume to the contrary that no such $x\in S$ exists to satisfy $(\sup S)-\epsilon < x \le \sup S$ for any $\epsilon > 0$. This means that for every $x\in S$, it holds that $x\le M -\epsilon$. Consequently, $M-\epsilon$ would be an upper bound for $S$ as $x\le M-\epsilon$ for all $x\in S$. Thus, $M-\epsilon$ must be an upper bound. However, $M$ is already assumed to be the supremum of $S$, meaning that $M$ is the least upper bound. $M-\epsilon$ being an upper bound contradicts the fact that $M$ is the least upper bound for the set $S$. Hence, the assumption that no such $x\in S$ exists to satisfy $(\sup S)-\epsilon < x \le \sup S$ for any $\epsilon > 0$ is false.
+	
+\end{proof}
+
+\newpage
+
+% Start Problem 4
+\noindent \textbf{(1.3.5)} Let $f : D\to \bR$ and $g : D\to \bR$ be function with D being nonempty. \newline
+
+\noindent (a) Suppose $f(x)\le g(y)$ for all $x\in D$ and $y\in D$. Show that
+
+\begin{equation*}
+	\underset{x\in D}{\sup} f(x) \le \underset{x\in D}{\inf} g(x).
+\end{equation*} 
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\newpage
+
+\noindent (b) Find a specific $D, f, \text{ and } g$, such that $f(x) \le g(x)$ for all $x\in D$, but
+
+\begin{equation*}
+	\underset{x\in D}{\sup} f(x) > \underset{x\in D}{\inf} g(x).
+\end{equation*}
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\newpage
+
+% Start Problem 5
+\noindent \textbf{(1.3.7)} Let $D$ be a nonempty set. Suppose $f : D\to\bR$ and $g : D\to \bR$ are bounded functions. \newline
+
+\noindent (a) Show
+
+\begin{align*}
+	\underset{x\in D}{\sup}(f(x) + g(x))\le\underset{x\in D}{\sup}f(x) + \underset{x\in D}{\sup}g(x) \quad \text{and} \quad \underset{x\in D}{\inf}(f(x)+g(x))\ge \underset{x\in D}{\inf}f(x) + \underset{x\in D}{\inf}g(x)
+\end{align*}
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\noindent (b) Find an example (or examples) where we obtain strict inequalities.
+
+
+
+\end{document}

@@ -1,0 +1,192 @@
+\documentclass[12pt]{article}
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+
+% Math and symbol packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{derivative}
+
+% Formatting
+\usepackage{inputenc}
+\usepackage[left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+
+% Actual content
+\begin{document}
+\pagestyle{fancy}
+\setlength{\headheight}{14.49998pt}
+\fancyhead[L]{Trevor Swan}
+\fancyhead[C]{\textbf{MATH321 - HW1}}
+\fancyhead[R]{09/04/24}
+\fancyfoot[C]{\thepage}
+
+% Start Problem 1
+\noindent \textbf{(1)} Let F be an ordered field. Prove that, for any pair of elements $x,y \in F$ such that $0 < x < y$, it holds that $x^2 < y^2$.
+
+\begin{proof}
+Consider the expression $x^2< y^2$,
+
+\begin{align*}
+	 0 <& y^2 - x^2 && \text{Subtract } x^2 \text{ from both sides} \\
+	 y^2-x^2 >& 0 && \text{Rearrange for clarity} \\
+	 (y-x)(y+x) >& 0 && \text{Factor the expression}
+\end{align*}
+
+Note that it suffices to show that $y^2-x^2>0$, as this is derived from a basic algebraic operation, which is assumed to hold true. It is given that $y>x>0$, which can be leveraged to prove the inequality. Both factors must be individually contended with and multiplied to yield strictly positive results. Firstly, $y-x>0$ is always true for all $x,y$, as it is given that $y>x$. Secondly, $y+x>0$ is guaranteed to be true for all $x,y$, as the sum of two positive elements of an ordered field, given to be F here, is positive. Therefore both factors of the expression are positive. By the definition of an ordered field F, if two elements $a,b\in F$ are both positive, meaning $a >0$ and $b>0$, then it is implied that $ab>0$. Defining $a=y-x$ and $b=y+x$, the two positive factors, it is clear that $ab>0$, and by extension, $(y-x)(y+x) > 0$. Consequently, $y^2 - x^2 >0$, and hence $y^2 > x^2$ by fundamental properties of algebra which are assumed to hold true. Therefore, for any $x,y\in F$, where $F$ is an ordered field, and $0<x<y$, it holds that $x^2 < y^2$.
+\end{proof}
+
+\newpage
+ 
+% Start Problem 2
+\noindent \textbf{(2)} Let $S$ be an ordered set and $A \subset S$ be a finite subset. \\
+\indent(a) Prove that $\inf A$ and $\sup A$ exist.
+
+\begin{proof}
+Suppose a set A has n elements, written as $\set{a_0, a_1, \dots, a_n}$. \\
+
+% Induction boilerplate
+\textbf{Base Case:} \\
+Consider the set with one element, $A=\set{a}$. Note this is the $(n=1)$ case. Trivially, it is noted that this set $A$ has $\inf A$ and $\sup A$ are both equal to $a$, as $a$ is both the largest and smallest element in $A$. Hence, $\inf A$ and $\sup A$ exist.
+
+\textbf{Inductive Hypothesis:} \\
+Assume that for any set $B$, who's a finite subset of S, $B\subset S$, with $n\ge1$ elements, both $\inf B$ and $\sup B$ exist.
+
+\textbf{Inductive Step:} \\
+Consider a set $A=\set{a_1, a_2, a_3, \dots, a_{n+1}}$. Note this is set of $(n+1)$ elements. By the inductive hypothesis, the subset $B=\set{a_1, a_2, a_3, \dots, a_n}$ has both a supremum and an infimum. \\
+
+% inf A exists
+\noindent To find $\inf A$, compare $a_{n+1}$ with $\inf B$. There are two  cases:
+
+\begin{itemize}
+\item \textit{Case 1:} $a_{n+1} \ge \inf B$. In this case, the $n+1$ element is greater than $\inf B$, so it cannot be the greatest lower bound, hence $\inf B$ is the infimum of set $A$.
+
+\item \textit{Case 2:} $a_{n+1} < \sup B$. In this case, the 	$n+1$ element is less than $\inf B$, so the infimum exists and is equal to $a_{n+1}$. 
+\end{itemize}
+
+% sup A exists
+\noindent To find $\sup A$, compare $a_{n+1}$ with $\sup B$. There are two similar possible cases:
+
+\begin{itemize}
+\item \textit{Case 1:} $a_{n+1} \le \sup B$. In this case, the $n+1$ element does not exceed $\sup B$, so the supremum of A remains equal to $\sup B$, which exists by the inductive hypothesis.
+
+\item \textit{Case 2:} $a_{n+1} > \sup B$. In this case, the $n+1$ element exceeds, or is greater than, every element in B, making this value the new supremum for set $A$.
+\end{itemize}
+
+\textbf{Conclusion:} \\
+Therefore by induction, the statement is true for any finite subset $A\subset S$ for an ordered set $S$. Both $\inf A$ and $\sup A$ exist.
+\end{proof}
+
+\newpage
+
+\indent(b) Prove that $\inf A, \sup A \in A$. 
+
+\begin{proof}
+Using the proof in part (a), $\inf A$ and $\sup A$ both exist for any finite subset $A$ of the ordered set S.
+
+\textbf{The infimum of A is an element of set A:} \\
+Since A is defined as a finite subset, then it must have a smallest element because it is a subset of an ordered set which, by definition, requires all elements to be able to be compared. Define $m$ as this element, whereby $m\le a$ for all $a\in A$. By definition, $\inf A$ is the greatest lower bound of $A$, meaning that $\inf A \le a$ for all $a\in A$. Since $m$ is defined as the smallest element of $A$, $m\le \inf A$ as a result. However, $\inf A \le m$ as $m$ is an element of $A$ and $\inf A$ is a lower bound. Note that both values are less than or equal to each other. Therefore, $\inf A = m$, and consequently $\inf A$ is an element of $A$.
+
+\textbf{The supremum of A is an element of set A:} \\
+Similarly, $A$ also has a greatest as it is finite. Define $M$ as this element, where $M\ge a$ for all $a\in A$. By definition $\sup A$ is the least upper bound of $A$, meaning $\sup A\ge a$ for all $a\in A$. Since $M$ is defined as the greatest element of $A$, $M\ge \sup A$ as a result. However, $\sup A\ge M$ as $M$ is an element of $A$ and $\sup A$ is an upper bound. Following similar logic to the above reasoning, $\sup A = M$, and consequently $\sup A$ is an element of $A$.
+
+\textbf{Conclusion:} \\
+Therefore, both $\inf A$ and $\sup A$ are elements of $A$, where $A$ is a finite subset of the ordered set $S$.
+\end{proof}
+
+\newpage
+
+%Start Problem 3
+\noindent \textbf{(3)} Let $S$ be an ordered set, suppose that $B \subset S$ is bounded from above and from below, and let $A \subset B$ be non-empty. Suppose that all $\inf$s and $\sup$s exist. Prove that
+
+\begin{equation*}
+	\inf B \le \inf A \le \sup A \le \sup B
+\end{equation*}
+
+\begin{proof}
+Assuming that $A$ is a non-empty set, and that all $\inf$s and $\sup$s exist, it is known that every element in $A$ is also an element in $B$. Therefore, any lower bound of $B$ is also a lower bound of $A$, and any upper bound of $B$ is also an upper bound of $A$.
+
+\textbf{Step 1:} Prove $\inf B \le \inf A$ \\
+As stated above, any lower bound of $B$ is also a lower bound of $A$. Since $\inf B$ is the greatest lower bound of $B$, and $A$ is made up of elements from set $B$, then $\inf B$ must be less than or equal to any lower bound of $A$, including $\inf A$.
+
+\textbf{Step 2:} Prove $\inf A \le \sup A$ \\
+By definition, $\inf A$ is the greatest lower bound of $A$, and $\sup A$ is the least upper bound of $A$. This allows two basic cases:
+\begin{itemize}
+\item \textit{Case 1:} \\
+If $A$ has only one element, then that one element, say $m$, is both the lower and upper bound, or $\inf A$ and $\sup A$ at the same time. Therefore the two are equal.
+
+\item \textit{Case 2:} \\
+If $A$ has $n$ number of elements, then it has an upper bound and lower bound, as it is a subset of $B$, which is bounded from above and below. By the same definition listed above, $\inf A \le \sup A$, as $\inf A$ is a lower bound and $\sup A$ is an upper bound. 
+\end{itemize}
+
+\textbf{Step 3:} Prove that $\sup A \le \sup B$ \\
+As stated above, any upper bound of $B$ is also an upper bound for $A$. Since $\sup B$ is the least upper bound of $B$, and $A$ is a subset of $B$, then $\sup B$ must be greater than or equal to any upper bound of $A$, including $\sup A$. \\
+
+\noindent \textit{It should be noted that the case-by-case logic used in step two can be applied to the other steps, though the logic is redundant and not as necessary when comparing $\inf$s and $\sup$s of two different sets.} \\
+
+\textbf{Conclusion:} \\
+As $S$ is an ordered set, and is the parent set to $A$ and $B$, apply transitivity to the three inequalities proved in the above steps. Hence given a subset $B$ of an ordered set $S$ which is bounded from above and below and a subset $A$ of $B$ which is non-empty, it follows that:
+
+\begin{equation*}
+	\inf B \le \inf A \le \sup A \le \sup B
+\end{equation*}
+
+\noindent Assuming that all $\inf$s and $\sup$s exist.
+\end{proof}
+
+\newpage
+
+% Start Problem 4
+\noindent \textbf{(4)} Prove that $\sqrt{3}$ is irrational.
+
+\begin{proof}
+Assume to the contrary, that there is an $x\in\mathbb{Q}$ such that $x^2=3$, and that this chosen x is rational. Let $x=\frac{m}{n}$, where $m,n\in\mathbb{Z}\setminus \set{0}$, and assume $x$ is in lowest terms. So $(\frac{m}{n})^2=3$, by substitution and we note that $m^2 = 3n^2$, where $m^2$ is seen to be divisible by 3 and consequently $m$ is also divisible by 3. Write $m=3k$ for some integer $k\neq0$ and so, by substitution, $(3k)^2=3n^2$. Divide the expression by 3 and note that $3k^2=n^2$, and hence $n$ is also divisible by 3. Both $m \textit{ and } n$ are divisible by 3, so $\frac{m}{n}$ cannot be in lowest terms. Thus we have arrived at a contradiction , showing that $\sqrt{3}$ is irrational.
+\end{proof}
+
+\newpage
+
+%Start Problem 5
+\noindent \textbf{(5)} Prove the arithmetic-geometric means inequality: for any pair of non-negative real numbers $x, y$,
+
+\begin{equation*}
+	\sqrt{xy} \le \frac{x+y}{2}
+\end{equation*}
+
+\noindent and there is equality if and only if $x=y$.
+
+\begin{proof}
+Note that $x,y\in\mathbb{R}$, and $x,y\ge 0$ as they are non-negative. Apply basic algebraic manipulation:
+
+\begin{align*}
+\sqrt{xy} \le& \frac{x+y}{2} && \text{Given} \\
+2\sqrt{xy} \le& (x+y) && \text{Multiply both sides by 2} \\
+(2\sqrt{xy})^2 \le& (x+y)^2 && \text{Square both sides} \\
+4xy \le& x^2 + 2xy + y^2 && \text{Expand both expressions} \\
+x^2 + 2xy + y^2 \ge& 4xy && \text{Rearrange inequality} \\
+x^2 - 2xy + y^2 \ge& 0 && \text{Combine like terms} \\
+\implies (x-y)^2 \ge& 0 && \text{Factor binomial expression}
+\end{align*}
+
+\noindent \textit{It can be noted that the above steps could be repeated in reverse order to further emphasize the equality of the first and last lines of the algebra above.} \\
+
+\noindent There are now two clear cases derived from the above expression as follows:
+
+\begin{itemize}
+\item \textit{Case 1:} \\
+Consider the case where $x\neq y$. In this case, any choice of $x$ and $y$ which abide by the aforementioned restrictions, yield a positive value by \underline{Proposition 4}. This states that any non-zero value in an ordered field, in this case the real numbers, yields a positive value when squared. $(x-y)$ only yields a value of 0 if $x=y$, which is neglected in this case. Consequently, The inequality holds true for this case.
+
+\item \textit{Case 2:} \\
+Consider the case where $x=y$. In this case, any choice of $x$ and $y$ which are both equal and abide by the aforementioned restrictions results in $0$ when they are subtracted. The square of zero is also zero, and hence the inequality holds true in this case as $0 \le 0$. Evaluating the inequality using an $'='$ as:
+
+\begin{equation*}
+(x-y)^2=0\implies x-y=0\implies x=y
+\end{equation*}
+
+more elegantly shows that equality is only reached when $x=y$.
+\end{itemize}
+
+\noindent Both of the above cases are true, therefore the arithmetic-geometric means inequality is true for any pair of non-negative real numbers $x, y$. $\sqrt{xy} \le \frac{x+y}{2}$ is true for any such choice, and equal if and only if $x=y$.
+\end{proof}
+
+\end{document}
