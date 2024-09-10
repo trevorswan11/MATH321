@@ -91,7 +91,7 @@
 
 \begin{proof}
 	Let $M\coloneq\sup S$ be the supremum of $S$. By definition of the supremum, $M$ is the smallest number such that $M$ is an upper bound of $S$ where for all $x \in S$, it holds that $x\le M$.
-	\indent Assume to the contrary that no such $x\in S$ exists to satisfy $(\sup S)-\epsilon < x \le \sup S$ for any $\epsilon > 0$. This means that for every $x\in S$, it holds that $x\le M -\epsilon$. Consequently, $M-\epsilon$ would be an upper bound for $S$ as $x\le M-\epsilon$ for all $x\in S$. Thus, $M-\epsilon$ must be an upper bound. However, $M$ is already assumed to be the supremum of $S$, meaning that $M$ is the least upper bound. $M-\epsilon$ being an upper bound contradicts the fact that $M$ is the least upper bound for the set $S$. Hence, the assumption that no such $x\in S$ exists to satisfy $(\sup S)-\epsilon < x \le \sup S$ for any $\epsilon > 0$ is false.
+	\indent Assume to the contrary that no such $x\in S$ exists to satisfy $(\sup S)-\epsilon < x \le \sup S$ for any $\epsilon > 0$. This means that for every $x\in S$, it holds that $x\le M -\epsilon$. Consequently, $M-\epsilon$ would be an upper bound for $S$ as $x\le M-\epsilon$ for all $x\in S$. Thus, $M-\epsilon$ must be an upper bound. However, $M$ is already assumed to be the supremum of $S$, meaning that $M$ is the least upper bound. $M-\epsilon$ being an upper bound contradicts the fact that $M$ is the least upper bound for the set $S$ as $M-\epsilon\le M$. Hence, the assumption that no such $x\in S$ exists to satisfy $(\sup S)-\epsilon < x \le \sup S$ for any $\epsilon > 0$ is false.
 	
 \end{proof}
 
@@ -107,7 +107,16 @@
 \end{equation*} 
 
 \begin{proof}
-	\lipsum[1]
+	As argued on Page 38 of \textit{Basic Analysis I: Introduction to Real Analysis, Volume 1.} by Lebl, Jiri, the $x$'s on either side of the inequality are not necessarily the same. For ease of the argument, refer to the function $g$ as a function of $y$, which is acceptable because it is given that $y\in D$. 
+	
+\indent Let $M=\underset{x\in D}{\sup} f(x)$ and $m=\underset{x\in D}{\inf} g(x)$. By the definition of the supremum, $M$ is the least upper bound for $f(x)$ for all $x\in D$. This means that $M\ge f(x)$ for all $x\in D$. On the other hand, $m$ is, by definition, the greatest lower bound for $g(y)$ for all $y\in D$. This means that $m\le g(y)$ for all $y\in D$.
+
+\indent It is given that $f(x)\le g(y)$ for all $x\in D$ and $y\in D$. Also, $m\le g(y)$ as shown above. These two inequalities can be combined based on the given as $f(x)\le m$ for all $x,y\in D$. Since $f(x)\le m$ for all $x\in D$, $m$ is an upper bound for $f$. Recall that $M$, the supremum of $f$, is the least upper bound for $f$, so it must be true that $M\le m$. Re-substituting the appropriate values for $M$ and $m$ yields the expression 
+
+\begin{equation*}
+	\underset{x\in D}{\sup} f(x) \le \underset{x\in D}{\inf} g(x).
+\end{equation*}
+
 \end{proof}
 
 \newpage
@@ -119,7 +128,16 @@
 \end{equation*}
 
 \begin{proof}
-	\lipsum[1]
+	Choose $D\coloneq\bN$, and let $f(x)=\frac{1}{x}$, $g(x)=x$ for $x=[1,10], x\in D$. The supremum of $f(x)$. It is known that $f(x)$ is a decreasing function, with $f(1)=\frac{1}{1}=1$ and $f(10)=\frac{1}{10}=0.1$. Therefore, $f(x)$ achieves its maximum value at $f(1)$. In other words, the supremum of $f(x)$ is $1$, written as $\underset{x\in D}{\sup} f(x)=1$. For $g(x)$, it is known to be a constantly increasing function, with $g(1)=1$ and $g(10)=10$. Therefore, $g(x)$ achieves its minimum value at $g(1)$. In other words, the infimum of $g(x)$ is $1$, written as $\underset{x\in D}{\inf} g(x) = 1$. Because $g(x)$ achieves its minimum at $x=1$, and $f(x)$ achieves its maximum at that value as well, the inequality $f(x) \le g(x)$ holds true for all $x\in D$. Putting these facts together
+	
+\begin{align*}
+	\underset{x\in D}{\sup} f(x) = 1 \quad \text{and} \quad \underset{x\in D}{\inf} g(x) = 1
+\end{align*}
+
+\noindent Therefore the strict inequality, with values plugged in, $\underset{x\in D}{\sup} f(x) > \underset{x\in D}{\inf} g(x)$ cannot be true as $\underset{x\in D}{\sup} f(x)=\underset{x\in D}{\inf} g(x)=1$, and it is incorrect to say $1>1$, without showing equality.
+
+Suppose then that $g(x)=x+1$, and $f(x)$ along with $D$ remain untouched. Similar logic can be followed, yielding $\underset{x\in D}{\inf} g(x) = 2$. As $f(x)$ was untouched, $\underset{x\in D}{\sup} f(x) = 1$. Therefore the inequality $\underset{x\in D}{\sup} f(x) > \underset{x\in D}{\inf} g(x)$ is untrue even when the strict inequality $f(x) < g(x)$ is true.
+
 \end{proof}
 
 \newpage
@@ -134,11 +152,72 @@
 \end{align*}
 
 \begin{proof}
-	\lipsum[1]
+	Let $M=\underset{x\in D}{\sup}f(x)$ and $N=\underset{x\in D}{\sup}g(x)$. By the definition of the supremum, $f(x)\le M$ and $g(x)\le N$ for all $x\in D$. These two inequalities can be added to show that $f(x)+g(x)\le M + N$ for all $x\in D$. This means that all pairs of $f$ and $g$ for all $x\in D$, their sum is less than or equal to the sum of the individual function's supremum. It is known that the functions sum is bounded, as both $f(x)$ and $g(x)$ are given to be bounded. Consequently, the least upper bound of $f(x)+g(x)$ must also be less than or equal to $M+N$. By definition, the least upper bound of $f(x)+g(x) \coloneq \underset{x\in D}{\sup}(f(x) + g(x))$. Substituting this expression into $f(x)+g(x)\le M + N$, along with known values of $M$ and $N$, it can be seen that
+	
+\begin{align*}
+	\underset{x\in D}{\sup}(f(x) + g(x))\le\underset{x\in D}{\sup}f(x) + \underset{x\in D}{\sup}g(x)
+\end{align*}
+
+Now, let $m=\underset{x\in D}{\inf}f(x)$ and $n=\underset{x\in D}{\inf}g(x)$. By the definition of the infimum, $m\le f(x)$ and $n\le g(x)$ for all $x\in D$. Again, these two inequalities can be added together to show that $m+n\le f(x)+g(x)$ for all $x\in D$. This means that all pairs of $f$ and $g$ for all $x\in D$, their sum is greater than or equal to the sum of the individual function's infimum. Consequently, the greatest lower bound of $f(x)+g(x)$ must also be greater than or equal to $m+n$. By definition, the greatest lower bound $f(x)+g(x)\coloneq\underset{x\in D}{\inf}(f(x)+g(x))$. Substituting this expression into  $m+n\le f(x)+g(x)$, along with known values of $m$ and $n$, it can be seen that
+
+\begin{align*}
+	\underset{x\in D}{\inf}f(x) + \underset{x\in D}{\inf}g(x)\le \underset{x\in D}{\inf}(f(x)+g(x))
+\end{align*}
+
+\noindent which can be reversed to show
+
+\begin{align*}
+	\underset{x\in D}{\inf}(f(x)+g(x))\ge \underset{x\in D}{\inf}f(x) + \underset{x\in D}{\inf}g(x)
+\end{align*}
+
+Therefore if $D$ is a nonempty set, and $f : D\to\bR$ and $g : D\to \bR$ are bounded functions, then it holds that, for all $x\in D$,
+
+\begin{align*}
+	\underset{x\in D}{\sup}(f(x) + g(x))\le\underset{x\in D}{\sup}f(x) + \underset{x\in D}{\sup}g(x) \quad \text{and} \quad \underset{x\in D}{\inf}(f(x)+g(x))\ge \underset{x\in D}{\inf}f(x) + \underset{x\in D}{\inf}g(x)
+\end{align*}
+
 \end{proof}
 
-\noindent (b) Find an example (or examples) where we obtain strict inequalities.
+\newpage
 
+\noindent (b) Find an example where we obtain strict inequalities.
 
+\begin{proof}
 
+Suppose $D=[1,2]$, so $D$ is non-empty. Allow $f(x)$ and $g(x)$ to be function of $x\in D$. Let $f(x)=x$, and $g(x)=-3x+4$. We observe the infimum and supremum below by noting that $f(x)$ and $g(x)$ are constantly increasing and decreasing functions, respectively. This means that the infimum of $f$ is found at the minimum $x$ value in $D$, and the supremum at the maximum value. The opposite is true for $g$. Consequently,
+
+\begin{align*}
+	\underset{x\in D}{\inf}f(x)=\inf f(1) = 1 && \underset{x\in D}{\sup}f(x)=\sup f(2) = 2 \\
+	\underset{x\in D}{\inf}g(x)=\inf g(2) = -2 && \underset{x\in D}{\sup}g(x)=\sup g(1) = 1
+\end{align*}
+
+To determine if strict inequalities hold for 
+
+\begin{align*}
+	\underset{x\in D}{\sup}(f(x) + g(x))\le\underset{x\in D}{\sup}f(x) + \underset{x\in D}{\sup}g(x) \quad \text{and} \quad \underset{x\in D}{\inf}(f(x)+g(x))\ge \underset{x\in D}{\inf}f(x) + \underset{x\in D}{\inf}g(x)
+\end{align*}
+
+\noindent we can simply plug in the respective values for the individual terms, though it requires more effort for the infimum/supremum of the sum of the functions. We can add $f(x)$ and $g(x)$ together and call their sum $h(x)$ as
+
+\begin{align*}
+	h(x)=f(x)+g(x)=x+(-3x+4)=-2x+4
+\end{align*}
+
+\noindent Like $g(x)$, $h(x)$ is constantly decreasing and finds its supremum at its minimum inputted $x$ value and the infimum at the maximum input. These are found to be
+
+\begin{align*}
+	\underset{x\in D}{\inf}h(x)=\inf h(2) = 0 && \underset{x\in D}{\sup}h(x)=\sup h(1) = 2
+\end{align*}
+
+Finally, we can substitute respective values for $\underset{x\in D}{\inf}f(x)$, $\underset{x\in D}{\sup}f(x)$, $\underset{x\in D}{\inf}g(x)$, $\underset{x\in D}{\sup}g(x)$, and the values found from $h(x)$ into $\underset{x\in D}{\inf}(f(x) + g(x))$ and $\underset{x\in D}{\sup}(f(x) + g(x))$ to show that
+
+\begin{align*}
+	2 \le& 2 + 1 && 0 \ge 1 + (-2) \\
+	2\le& 3 && 0\ge -1 \\
+	2 <& 3 && 0>-1
+\end{align*}
+
+As shown, there is no equality in the above expressions, so they are said to be strict. This is simply one of many examples, and others may be found without going as in depth.
+
+\end{proof}
 \end{document}
