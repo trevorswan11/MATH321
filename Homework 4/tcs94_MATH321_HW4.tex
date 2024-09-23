@@ -1,0 +1,107 @@
+\documentclass[12pt]{article}
+
+% Custom Commands
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\limtoinf}[1]{\lim_{ {#1} \to\infty}}
+\newcommand{\abs}[1]{\left| {#1} \right|}
+\newcommand{\ceil}[1]{\lceil {#1} \rceil}
+\newcommand{\floor}[1]{\lfloor {#1} \rfloor}
+\newcommand{\seq}[2][n]{\left\{ {#2} \right\}_{#1=1}^\infty}
+\newcommand{\paren}[1]{\left( {#1} \right)}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bQ}{\mathbb{Q}}
+
+% Math and symbol packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{derivative}
+
+% Formatting
+\usepackage{inputenc}
+\usepackage[left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+
+% Actual content
+\begin{document}
+\pagestyle{fancy}
+\setlength{\headheight}{14.49998pt}
+\fancyhead[L]{Trevor Swan}
+\fancyhead[C]{\textbf{MATH321 - HW4}}
+\fancyhead[R]{09/27/24}
+\fancyfoot[C]{\thepage}
+
+% Begin Problem 1
+\noindent \textbf{(2.2.3)} Prove that if $\seq{x_n}$ is a convergent sequence, $k\in\bN$, then
+
+\begin{equation*}
+	\limtoinf{n} x_n^k = \paren{\limtoinf{n} x_n}^k.
+\end{equation*}
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\newpage
+
+% Begin Problem 2
+\noindent \textbf{(2.2.5)} Let $x_n\coloneq\frac{n-\cos(n)}{n}$. Use the squeeze lemma to show that $\seq{x_n}$ converges and find the limit.
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\newpage
+
+% Begin Problem 3
+\noindent \textbf{(2.2.9)} Suppose $\seq{x_n}$ is a sequence, $x\in\bR$, and $x_n\neq x$ for all $n\in\bN$. Suppose the limit
+
+\begin{equation*}
+	L\coloneq\limtoinf{n}\frac{\abs{x_{n+1}-x}}{\abs{x_n-x}}
+\end{equation*}
+
+\noindent exists and $L<1$. Show that $\seq{x_n}$ converges to x.
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\newpage
+
+% Begin Problem 4
+\noindent \textbf{(2.2.12)} Let $\seq{a_n}$ and $\seq{b_n}$ be sequences.
+
+\noindent a) Suppose $\seq{a_n}$ is bounded and $\seq{b_n}$ converges to 0. Show that $\seq{a_nb_n}$ converges to 0.
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\noindent b) Find an example where $\seq{a_n}$ is unbounded, $\seq{b_n}$ converges to 0, and $\seq{a_nb_n}$ is not convergent.
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\noindent c) Find an example where $\seq{a_n}$ is bounded, $\seq{b_n}$ converges to some $x\neq0$, and $\seq{a_nb_n}$ is not convergent.
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\newpage
+
+% Begin Problem 5
+\noindent \textbf{(2.2.15)} Prove $\limtoinf{n}\paren{n^2+1}^\frac{1}{n}=1$
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\newpage
+
+\end{document}
