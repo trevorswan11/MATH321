@@ -43,7 +43,21 @@
 \end{equation*}
 
 \begin{proof}
-	\lipsum[1]
+	Prove by induction. Allow the base case to be $k=1$. Therefore, we have that $\limtoinf{n} x_n^1=\paren{\limtoinf{n} x_n}^1$, which simplifies to $\limtoinf{n} x_n=\limtoinf{n} x_n$, which is true trivially as $x_n^1=x_n$. Now suppose that $k=2$. Defining $x\coloneq\paren{\limtoinf{n} x_n}$, and $\paren{\limtoinf{n} x_n}^2=x^2$, we can then write, making use of the product of limit property, $\limtoinf{n} x_n^2=\limtoinf{n} (x_n\cdot x_n)=\paren{\limtoinf{n} x_n}\cdot\paren{\limtoinf{n} x_n} =x\cdot x=x^2$. This is known to hold as $\seq{x_n}$ is given to converge. Therefore both base cases of $k=1,2$ hold true. \\
+\indent Assume that the statement holds true for all $k\le m$, where $m\in\bN$. We now have that $\limtoinf{n} x_n^m=x^m$ is true by assumption and want to show that $\limtoinf{n} x_n^{m+1}=x^{m+1}$. By the properties of exponents we have that $x_n^{m+1}=x_n^m\cdot x_n$, so we can use the above limit property to say $\limtoinf{n} x_n^{m+1}=\limtoinf{n} \paren{x_n^m\cdot x_n}=\paren{\limtoinf{n} x_n^m}\cdot\paren{\limtoinf{n} x_n}$. Using the inductive hypothesis, we have that $\limtoinf{n} x_n^m=x^m$ and can show that
+
+\begin{align*}
+	\paren{\limtoinf{n} x_n^m}\cdot\paren{\limtoinf{n} x_n}=x^m\cdot x=x^{m+1}.
+\end{align*}
+
+\noindent Note that we defined $x\coloneq\limtoinf{n} x_n$. \\
+
+\indent Therefore, through the use of limit and exponent properties along with principles of induction, we have shown that if $\seq{x_n}$ is a convergent sequence, $k\in\bN$, then
+
+\begin{equation*}
+	\limtoinf{n} x_n^k = \paren{\limtoinf{n} x_n}^k.
+\end{equation*}
+
 \end{proof}
 
 \newpage
@@ -52,7 +66,36 @@
 \noindent \textbf{(2.2.5)} Let $x_n\coloneq\frac{n-\cos(n)}{n}$. Use the squeeze lemma to show that $\seq{x_n}$ converges and find the limit.
 
 \begin{proof}
-	\lipsum[1]
+	We begin by rewriting $x_n$ using basic algebraic properties as 
+
+\begin{equation*}
+	x_n=\frac{n}{n}-\frac{\cos{n}}{n}=1-\frac{\cos{n}}{n}
+\end{equation*}
+
+It is known that the cosine function is bounded between -1 and 1. in other words, $\abs{\cos{n}}\le1$. Using this, we can then create upper and lower bound functions for $x_n$ in order to make use of the squeeze lemma. These functions can be derived as
+
+\begin{align*}
+	\abs{-\cos{n}}\le&1 && \text{Add negative sign to }\cos \\
+	-1\le-\cos{n}\le&1 && \text{Definition of Absolute Value} \\
+	-\frac{1}{n}\le-\frac{\cos{n}}{n}\le&\frac{1}{n} && \text{Divide all terms by }n \\
+	1-\frac{1}{n}\le1-\frac{\cos{n}}{n}\le&1+\frac{1}{n} && \text{Add 1 to all terms} \\
+	1-\frac{1}{n}\le x_n\le&1+\frac{1}{n} && \text{Substitute }x_n
+\end{align*}
+
+\noindent Therefore $x_n$ is bounded below by $a_n=1-\frac{1}{n}$ and above by $b_n=1+\frac{1}{n}$. Consequently we can say $a_n\le x_n\le b_n$. It must now be shown that these bounds converge to the same limit. In other words, 
+
+\begin{align*}
+	\limtoinf{n} a_n = \limtoinf{n} b_n
+\end{align*}
+
+Let $\epsilon>0$ be given. By the archimedean property, there must exist some $M\in\bN$ such that $0<\frac{1}{M}<\epsilon$. Consequently, for every $n>M$, we have that $\abs{x_n-0}=\abs{\frac{1}{n}}\le\frac{1}{m}\le\epsilon$, showing that $\limtoinf{n}\frac{1}{n}=0$ as required. Note that the sequence $\seq{1}$ is a constant sequence and converges to 1. \\
+
+We can rewrite, with the addition property of limits, $\limtoinf{n} a_n=\limtoinf{n}\paren{1-\frac{1}{n}}=\limtoinf{n} 1 - \limtoinf{n} \frac{1}{n}$. These limits can be evaluated as $\limtoinf{n} 1 - \limtoinf{n} \frac{1}{n}=1-0=1$. \\
+
+We can similarly rewrite $\limtoinf{n} b_n=\limtoinf{n}\paren{1+\frac{1}{n}}=\limtoinf{n} 1 + \limtoinf{n} \frac{1}{n}$. These limits can be evaluated as $\limtoinf{n} 1 + \limtoinf{n} \frac{1}{n}=1+0=1$. \\
+
+Since both $\seq{a_n}$ and $\seq{b_n}$ both converge to 1, then $\seq{x_n}=\seq{\frac{n-\cos(n)}{n}}$ must also converge to 1 as $a_n\le x_n\le b_n$, as required.
+ 
 \end{proof}
 
 \newpage
@@ -67,7 +110,19 @@
 \noindent exists and $L<1$. Show that $\seq{x_n}$ converges to x.
 
 \begin{proof}
-	\lipsum[1]
+	Since $L\coloneq\limtoinf{n}\frac{\abs{x_{n+1}-x}}{\abs{x_n-x}}$ and $L<1$, if we let $\epsilon>0$ be given, there exists some $M\in\bN$ such that for all $n\ge M$, $\abs{\frac{\abs{x_{n+1}-x}}{\abs{x_n-x}}-L}<\epsilon$. This implies the following by the definition of the absolute value
+	
+\begin{align*}
+	-\epsilon<\frac{\abs{x_{n+1}-x}}{\abs{x_n-x}}&-L<\epsilon \\
+	L-\epsilon<\frac{\abs{x_{n+1}-x}}{\abs{x_n-x}}&-L<L+\epsilon
+\end{align*}
+
+Since $L<1$ is given, we can choose an $\epsilon>0$ such that $L+\epsilon<1$. $L>0$ must be true as $\frac{\abs{x_{n+1}-x}}{\abs{x_n-x}}>0$ for all $n\in\bN$ by definition of the absolute value. In other words, $0<L+\epsilon<1$. Define $\beta\coloneq L+\epsilon$, yielding that $0<\beta<1$. We can now say that, for sufficiently large $n\in\bN$ such that $n\ge M$, $\frac{\abs{x_{n+1}-x}}{\abs{x_n-x}} < \beta$ or equivalently that $\abs{x_{n+1}-x}<\beta\abs{x_n-x}$. \\
+
+\indent We want to show by induction that $\abs{x_{n+k}-x}<\beta^k\abs{x_{n}-x}$ for any $k\in\bN$. We start with the base case $k=1$, which is true as $\abs{x_{n+1}-x}<\beta\abs{x_{n}-x}$ holds by definition of the limit. Assume this holds true for $k\in\bN$, and we want to show it also holds for $k+1$. In other words, assume $\abs{x_{n+k}-x}<\beta^k\abs{x_{n}-x}$ to be true, and use this hypothesis to show $\abs{x_{n+k+1}-x}<\beta^{k+1}\abs{x_{n}-x}$ is also true. We know that for successive terms $n+k+1$ and $n+k$, $\abs{x_{n+k+1}-x}<\beta\abs{x_{n+k}-x}$ is true. Because $\beta\in\bR$, we can substitute the inductive hypothesis to say that $\abs{x_{n+k+1}-x}<\beta\abs{x_{n+k}-x}<\beta\paren{\beta^k\abs{x_n-x}}$. We can then conclude that, after combining the exponent, $\abs{x_{n+k+1}-x}<\beta^{k+1}\abs{x_{n}-x}$. This shows that for all $k\in\bN$, $\abs{x_{n+k}-x}<\beta^k\abs{x_{n}-x}$. \\
+
+\indent Since $0<\beta<1$, we can now observe that as $k\to\infty$, $\beta\to0$. In other words, $\limtoinf{n}\abs{x_{n+k}-x}=0$, which implies that there exists some $\alpha>0$ for which $\abs{x_{n+k}-x}<\alpha$ for all $n\ge N$, $N\in\bN$. Since this sequence is the $k$-tail of $\seq{x_n}$ and is convergent to $x$ by definition, the sequence $\seq{x_n}$ must also be convergent to $x$. 
+
 \end{proof}
 
 \newpage
@@ -78,19 +133,36 @@
 \noindent a) Suppose $\seq{a_n}$ is bounded and $\seq{b_n}$ converges to 0. Show that $\seq{a_nb_n}$ converges to 0.
 
 \begin{proof}
-	\lipsum[1]
+	$\seq{a_n}$ is given to be bounded, so we can say that there exists an $M>0,M\in\bR$ such that $\abs{a_n}\le M$ for all $n\in\bN$. $\seq{b_n}$ is given to converge to 0, so we can say that for any arbitrary $\epsilon>0$, there exists an $N\in\bN$ for which $\abs{b_n}<\epsilon$ for all $n\ge N$. We need to show that $\seq{a_nb_n}$ converges to 0, meaning that for any arbitrary $\epsilon>0$, there exists a $k\in\bN$ such that for all $n\ge K$, $\abs{a_nb_n-0}<\epsilon$. \\
+	
+\indent Since $\seq{a_n}$ is bounded and that absolute value is friendly with multiplication, we have $\abs{a_nb_n}=\abs{a_n}\abs{b_n}\le M\abs{b_n}$. Since $\seq{b_n}$ converges to zero, we can make $\abs{b_n}$ arbitrarily small, and can choose $\abs{b_n}<\frac{\epsilon}{M}$ as this holds for all $n\ge N$ and $\epsilon>0$ is arbitrary and $M>0$ is given. Thus we have that $\abs{a_nb_n}=\abs{a_n}\abs{b_n}\le M\abs{b_n}<M\cdot\frac{\epsilon}{M}=\epsilon$. Thus for all $n\ge K$, we have that $\abs{a_nb_n}<\epsilon$ which is equivalent to $\abs{a_nb_n-0}<\epsilon$, as required. 
 \end{proof}
 
 \noindent b) Find an example where $\seq{a_n}$ is unbounded, $\seq{b_n}$ converges to 0, and $\seq{a_nb_n}$ is not convergent.
 
 \begin{proof}
-	\lipsum[1]
+	Choose $a_n=n$ and $b_n=\frac{\cos{n}}{n}$. In this case $\seq{a_n}$ is unbounded as there is no greatest natural number and $n\in\bN$. For $\seq{b_n}$, we perform similar manipulations as done in problem 2. Cosine is bounded by 1, meaning that $\abs{\cos{n}}\le1$. We can use the squeeze lemma to show that $\frac{\cos{n}}{n}$ converges as
+	
+\begin{align*}
+	\abs{\cos{n}}&\le1 && \text{Defining Cosine} \\
+	-1\le\cos{n}&\le1 && \text{Definition of absolute value} \\
+	-\frac{1}{n}\le\frac{\cos{n}}{n}&\le\frac{1}{n	} && \text{Divide by }n\text{ as it preserves ordering}
+\end{align*}
+
+\noindent We can see that $\frac{\cos{n}}{n}$ is bounded below by $-\frac{1}{n}$ and above by $\frac{1}{n}$. It has been shown that $\frac{1}{n}$ converges to 0, so $-\frac{1}{n}=-\paren{\frac{1}{n}}$ also converges to 0. Since both bounds of $\frac{\cos{n}}{n}$ converge to the same limit, 0, we can say that $\frac{\cos{n}}{n}$ also converges to 0 by the squeeze lemma. Consequently, $\seq{b_n}$ is convergent and converges to 0. \\
+
+\indent We can now define $\seq{a_nb_n}=\seq{n\cdot\frac{\cos{n}}{n}}=\seq{\cos{n}}$. The cosine function alone oscillates between -1 and 1, so it is not convergent just as $\seq{(-1)^n}$ does not converge. Therefore $\seq{a_nb_n}$ is not convergent as required.
+
 \end{proof}
+
+\newpage
 
 \noindent c) Find an example where $\seq{a_n}$ is bounded, $\seq{b_n}$ converges to some $x\neq0$, and $\seq{a_nb_n}$ is not convergent.
 
 \begin{proof}
-	\lipsum[1]
+	Suppose $\seq{a_n}=\cos{n}$ and $\seq{b_n}=1$. $\seq{a_n}$ is bounded as $\abs{\cos{n}}\le1$, which is the definition of boundedness as we can choose $M=1$ for $\abs{\cos{n}}\le M$. $\seq{b_n}$ is the constant sequence 1, and consequently only takes on values of 1 for all $n\in\bN$. Therefore $b_n$ converges to 1 and $1\neq0$. \\
+	
+\indent We now have that $\seq{a_nb_n}=\seq{\cos{n}\cdot1}=\seq{\cos{n}}$. This is the same sequence as $\seq{a_n}$, which is not convergent. Therefore $\seq{a_nb_n}$ is not convergent as required.
 \end{proof}
 
 \newpage
@@ -99,7 +171,26 @@
 \noindent \textbf{(2.2.15)} Prove $\limtoinf{n}\paren{n^2+1}^\frac{1}{n}=1$
 
 \begin{proof}
-	\lipsum[1]
+	We can approach this similar to $\underline{\text{Example 2.2.14}}$ from the textbook. We begin by rewriting the expression as $\paren{n^2+1}^\frac{1}{n}=n^{\frac{2}{n}}\paren{1+\frac{1}{n^2}}^\frac{1}{n}$. We can first analyze the limit of $n^\frac{2}{n}$. We can say that $n^\frac{2}{n}=e^\frac{2\ln{n}}{n}$. As $n\to\infty$, $\frac{2\ln{n}}{n}\to0$. This can be proved using the squeeze theorem as demonstrated in $\underline{\text{2.2.5 \& 2.2.15b}}$. Therefore, $\frac{2\ln{n}}{n}\to0$ implies that $n^\frac{2}{n}\to e^0=1$. \\
+	
+\indent Next we analyze $\paren{1+\frac{1}{n^2}}^\frac{1}{n}$. We can take the natural log of this expression to yield $\ln{\paren{1+\frac{1}{n^2}}^\frac{1}{n}}$. We can then leverage the fact that $\ln\paren{1+x}\approx x$ as $x$ gets sufficiently small. As $\frac{1}{n^2}$ approaches 0 as $n\to\infty$, we can say that $\ln{\paren{1+\frac{1}{n^2}}^\frac{1}{n}}\approx\frac{1}{n^2}$ at the limit. Therefore, we have that 
+
+\begin{align*}
+	\ln{\paren{1+\frac{1}{n^2}}^\frac{1}{n}}=\frac{1}{n}\ln{\paren{1+\frac{1}{n^2}}}\approx\frac{1}{n}\cdot\frac{1}{n^2}=\frac{1}{n^3}
+\end{align*}
+
+\noindent Note that this approximation is only true as $n\to\infty$, the limit. \\
+
+\indent Let $\epsilon>0$ be given. By the archimedean property, there exists some $M\in\bN$ such that $0<M<\epsilon$. Consequently, for every $n\ge M$, we have that $\abs{\frac{1}{n^3}-0}=\abs{\frac{1}{n^3}}\le\frac{1}{M	}<\epsilon$ as required. Therefore $\frac{1}{n^3}$ converges to 0, and hence as $n\to\infty, \paren{1+\frac{1}{n^2}}^\frac{1}{n}\to0$ implies $e^0=1$. \\
+
+\indent Now we combine the results into a limit using the product property of limits as
+
+\begin{align*}
+	\limtoinf{n} n^{\frac{2}{n}}\paren{1+\frac{1}{n^2}}^\frac{1}{n}=\limtoinf{n}n^{\frac{2}{n}}\cdot\limtoinf{n}\paren{1+\frac{1}{n^2}}^\frac{1}{n}=1\cdot1=1
+\end{align*}
+
+\noindent Therefore, we can conclude that $\limtoinf{n}\paren{n^2+1}^\frac{1}{n}=1$ as required.
+
 \end{proof}
 
 \newpage
