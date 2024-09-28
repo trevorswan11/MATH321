@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.26)  28 SEP 2024 18:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.26)  28 SEP 2024 18:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./tcs94_MATH321_HW-template.tex
-(tcs94_MATH321_HW-template.tex
+**./tcs94_MATH321_HW5.tex
+(tcs94_MATH321_HW5.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
 (C:\Users\Trevor\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -220,8 +220,8 @@ Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
 \l__lipsum_b_int=\count291
 
 (C:\Users\Trevor\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex)
-) (tcs94_MATH321_HW-template.aux)
-\openout1 = `tcs94_MATH321_HW-template.aux'.
+) (tcs94_MATH321_HW5.aux)
+\openout1 = `tcs94_MATH321_HW5.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
 LaTeX Font Info:    ... okay on input line 32.
@@ -322,7 +322,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 [1{C:/Users/Trevor/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
 
 ] [2]
-[3] [4] [5] (tcs94_MATH321_HW-template.aux)
+[3] [4] [5] (tcs94_MATH321_HW5.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
@@ -330,17 +330,17 @@ L3 programming layer <2024-03-14>
  ) 
 Here is how much of TeX's memory you used:
  6750 strings out of 474424
- 153172 string characters out of 5741267
+ 153076 string characters out of 5741267
  1929496 words of memory out of 5000000
  29067 multiletter control sequences out of 15000+600000
  559021 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 65i,11n,79p,258b,237s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 65i,11n,79p,250b,237s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Trevor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmbx12.pfb><C:/Users/Trevor/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmr12.pfb><C:/Users/Trevor/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/amsfonts/cm/cmti12.pfb>
-Output written on tcs94_MATH321_HW-template.pdf (5 pages, 44658 bytes).
+Output written on tcs94_MATH321_HW5.pdf (5 pages, 44519 bytes).
 PDF statistics:
  33 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
