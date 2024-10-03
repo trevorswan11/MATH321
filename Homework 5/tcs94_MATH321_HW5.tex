@@ -28,6 +28,12 @@
 \usepackage{fancyhdr}
 \usepackage{lipsum}
 
+% Spacing formats
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{-6pt}
+	\setlength{\belowdisplayskip}{5pt}
+}
+
 % Actual content
 \begin{document}
 \pagestyle{fancy}
@@ -43,7 +49,9 @@
 (a) Show that $\seq{x_n+y_n}$ is bounded.
 
 \begin{proof}
-	\lipsum[1]
+	Suppose $M_1,M_2\in\bR$. Since $\seq{x_n}$ is bounded, the there exists some $M_1>0$ such that for all $n\in\bN, \abs{x_n}\le M_1$. Similarly since $\seq{y_n}$ is bounded, there exists some $M_2>0$ such that for all $n\in\bN, \abs{y_n}\le M_2$. 
+	
+	\indent Now consider the sequence $\seq{x_n + y_n}$. By the triangle inequality, $\abs{x_n+y_n}\le\abs{x_n}+\abs{y_n}$ holds. We can then say that $\abs{x_n+y_n}\le\abs{x_n}+\abs{y_n}\le M_1+M_2$. Defining $M=M_1+M_2$, this is equivalent to $\abs{x_n+y_n}\le M$. As $M_1$ and $M_2$ are arbitrary positive real numbers, $M$ is also a positive real number. Thus, by definition the sequence $\seq{x_n+y_n}$ is bounded, as required.
 \end{proof}
 
 (b) Show that
@@ -53,8 +61,23 @@
 \end{align*}
 
 \begin{proof}
-	\lipsum[1]
+	Let $\seq[k]{x_{n_k}}$ be a subsequence of $\seq{x_n}$. Since $\seq{x_n}$ is bounded, then $\seq[k]{x_{n_k}}$ must also be bounded. We can then choose a convergent subsequence $\seq[i]{x_{n_{k_i}}}$ of $\seq[k]{x_{n_k}}$, which is guaranteed to exist by the Bolzano-Weierstrass Theorem. Therefore $\limtoinf[i] \paren{x_{n_{k_i}}}$ exists and $\liminftoinf x_n\le\limtoinf[i] \paren{x_{n_{k_i}}}$ by the definition of the limit inferior.
+	
+\indent By similar reasoning we can let $\seq[k]{y_{n_k}}$ be a subsequence of $\seq{y_n}$ and can chose a subsequence $\seq[i]{y_{n_{k_i}}}$ such that $\limtoinf[i] \paren{y_{n_{k_i}}}$ exists. Hence $\liminftoinf y_n\le\limtoinf[i] \paren{y_{n_{k_i}}}$ by the definition of the limit inferior.
+
+\indent As you'd expect, we can also choose a subsequence $\seq[i]{x_{n_{k_i}}+y_{n_{k_i}}}$ of $\seq[k]{x_{n_{k}}+y_{n_{k}}}$ which is a subsequence of $\seq{x_n+y_n}$. By the Bolzano-Weierstrass Theorem, we can choose this subsequence such that it converges and thus $\limtoinf[i]\paren{x_{n_{k_i}}+y_{n_{k_i}}}=\limtoinf[k]\paren{x_{n_k}}+\limtoinf[k]\paren{x_{n_k}}$ and that $\liminftoinf\paren{x_n+y_n}\ge\limtoinf[i]\paren{x_{n_{k_i}}+y_{n_{k_i}}}$ by definition of the limit inferior. Using the previously derived expressions, we have
+
+\begin{align*}
+	\limtoinf[i]\paren{x_{n_{k_i}}+y_{n_{k_i}}}=&\limtoinf[i]\paren{x_{n_{k_i}}} + \limtoinf[i]\paren{y_{n_{k_i}}} \\
+	\limtoinf[i]\paren{x_{n_{k_i}}+y_{n_{k_i}}}\ge&\liminftoinf x_n +\liminftoinf y_n \\
+	\liminftoinf\paren{x_n+y_n}\ge\limtoinf[i]\paren{x_{n_{k_i}}+y_{n_{k_i}}}\ge&\liminftoinf x_n +\liminftoinf y_n
+\end{align*}
+
+\noindent Therefore $\paren{\liminftoinf x_n}+\paren{\liminftoinf y_n}\le\liminftoinf\paren{x_n+y_n}$ as required.
+
 \end{proof}
+
+\newpage
 
 (c) Find an explicit $\seq{x_n}$ and $\seq{y_n}$ such that
 
@@ -63,7 +86,20 @@
 \end{align*}
 
 \begin{proof}
-	\lipsum[1]
+	Let $x_n=(-1)^n$ and $y_n=(-1)^{n+1}$ for all $n\in\bN$. Clearly both of these sequences are bounded above by 1 and below by -1.
+	
+\begin{align*}
+	x_n+y_n=(-1)^n+(-1)^{n+1}=(-1)^n+(-1)^n(-1)=(-1)^n(1-1)=0
+\end{align*}
+
+Thus $\liminftoinf\paren{x_n+y_n}=0$. The minimum value for $x_n, y_n$ is -1 for all $n\in\bN$, so $\liminftoinf x_n=-1$ and $\liminftoinf y_n=-1$. Therefore $\liminftoinf x_n+\liminftoinf y_n=-1+-1=-2$. Consequently,
+
+\begin{align*}
+	\paren{\liminftoinf x_n}+\paren{\liminftoinf y_n}<&\liminftoinf\paren{x_n+y_n} \\
+	-2<0
+\end{align*}
+
+\noindent showing that the strict inequality (no equality) holds for these choices of $x_n,y_n$.
 \end{proof}
 
 \newpage
@@ -78,7 +114,17 @@
 \end{align*}
 
 \begin{proof}
-	\lipsum[1]
+	Choose convergent subsequences $\seq[i]{x_{n_{k_i}}}, \seq[i]{x_{n_{k_i}}}$ of $\seq{x_{n_k}}$ and $\seq{y_{n_k}}$, respectively as done in the previous exercise. Therefore the limits and limit superiors can be related as $\limsuptoinf{x_n}\ge\limtoinf[i]{x_{n_{k_i}}}$ and $\limsuptoinf{y_n}\ge\limtoinf[i]{y_{n_{k_i}}}$ by the definition of the limit superior. Note that these limits are guaranteed to exist as the subsequences were chosen to converge and $\seq{x_n}$ and $\seq{y_n}$ are given to be bounded.
+	
+\indent Similarly, we can also choose a subsequence $\seq[i]{x_{n_{k_i}}+y_{n_{k_i}}}$ of $\seq[k]{x_{n_{k}}+y_{n_{k}}}$. By the Bolzano-Weierstrass Theorem, we can chose this subsequence to converge. In other words, $\limtoinf[i]\paren{x_{n_{k_i}}+y_{n_{k_i}}}=\limtoinf[k]\paren{x_{n_k}}+\limtoinf[k]\paren{x_{n_k}}$. Also similarly to the above proof, $\limsuptoinf\paren{x_n+y_n}\le\limtoinf[i]\paren{x_{n_{k_i}}+y_{n_{k_i}}}$ by definition of the limit superior. Consequently we have that,
+
+\begin{align*}
+	\limtoinf[i]\paren{x_{n_{k_i}}+y_{n_{k_i}}}=&\limtoinf[i]\paren{x_{n_{k_i}}} + \limtoinf[i]\paren{y_{n_{k_i}}} \\
+	\limtoinf[i]\paren{x_{n_{k_i}}+y_{n_{k_i}}}\le&\limsuptoinf x_n +\limsuptoinf y_n \\
+	\limsuptoinf\paren{x_n+y_n}\le\limtoinf[i]\paren{x_{n_{k_i}}+y_{n_{k_i}}}\le&\limsuptoinf x_n +\limsuptoinf y_n
+\end{align*}
+
+\noindent Therefore, $\paren{\limsuptoinf x_n}+\paren{\limsuptoinf y_n}\ge\limsuptoinf\paren{x_n+y_n}$ as required.
 \end{proof}
 
 (b) Find an explicit $\seq{x_n}$ and $\seq{y_n}$ such that
@@ -88,13 +134,26 @@
 \end{align*}
 
 \begin{proof}
-	\lipsum[1]
+	Let $x_n=(-1)^n$ and $y_n=(-1)^{n+1}$ for all $n\in\bN$. Clearly both of these sequences are bounded above by 1 and below by -1.
+	
+\begin{align*}
+	x_n+y_n=(-1)^n+(-1)^{n+1}=(-1)^n+(-1)^n(-1)=(-1)^n(1-1)=0
+\end{align*}
+
+Thus $\limsuptoinf\paren{x_n+y_n}=0$. The maximum value for $x_n, y_n$ is 1 for all $n\in\bN$, so $\limsuptoinf x_n=1$ and $\limsuptoinf y_n=1$. Therefore $\limsuptoinf x_n+\limsuptoinf y_n=1+1=2$. Consequently,
+
+\begin{align*}
+	\paren{\limsuptoinf x_n}+\paren{\limsuptoinf y_n}>&\limsuptoinf\paren{x_n+y_n} \\
+	2>0
+\end{align*}
+
+\noindent showing that the strict inequality (no equality) holds for these choices of $x_n,y_n$.
 \end{proof}
 
 \newpage
 
 % Begin Problem 3
-\noindent \textbf{(2.4.1)} prove that $\seq{\frac{n^2-1}{n^2}}$ is Cauchy using directly the definition of Cauchy sequences.
+\noindent \textbf{(2.4.1)} Prove that $\seq{\frac{n^2-1}{n^2}}$ is Cauchy using directly the definition of Cauchy sequences.
 
 \begin{proof}
 	\lipsum[1]
