@@ -2,6 +2,7 @@
 
 % Custom Commands
 \newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\limit}[1]{\displaystyle \lim_{ {#1} }}
 \newcommand{\limtoinf}[1][n]{\lim_{ {#1} \to \infty}}
 \newcommand{\liminftoinf}[1][n]{\liminf_{ {#1} \to \infty}}
 \newcommand{\limsuptoinf}[1][n]{\limsup_{ {#1} \to \infty}}
@@ -10,6 +11,7 @@
 \newcommand{\floor}[1]{\lfloor {#1} \rfloor}
 \newcommand{\seq}[2][n]{\left\{ {#2} \right\}_{#1=1}^\infty}
 \newcommand{\paren}[1]{\left( {#1} \right)}
+\newcommand{\series}[2]{\displaystyle \sum_{ {#1} }^{ {#2} }}
 \newcommand{\bR}{\mathbb{R}}
 \newcommand{\bZ}{\mathbb{Z}}
 \newcommand{\bN}{\mathbb{N}}
@@ -27,6 +29,12 @@
 \usepackage[left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm]{geometry}
 \usepackage{fancyhdr}
 \usepackage{lipsum}
+
+% Spacing formats
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{-2pt}
+	\setlength{\belowdisplayskip}{5pt}
+}
 
 % Actual content
 \begin{document}

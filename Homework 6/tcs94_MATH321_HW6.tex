@@ -1,0 +1,156 @@
+\documentclass[12pt]{article}
+
+% Custom Commands
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\limit}[1]{\displaystyle \lim_{ {#1} }}
+\newcommand{\limtoinf}[1][n]{\lim_{ {#1} \to \infty}}
+\newcommand{\liminftoinf}[1][n]{\liminf_{ {#1} \to \infty}}
+\newcommand{\limsuptoinf}[1][n]{\limsup_{ {#1} \to \infty}}
+\newcommand{\abs}[1]{\left| {#1} \right|}
+\newcommand{\ceil}[1]{\lceil {#1} \rceil}
+\newcommand{\floor}[1]{\lfloor {#1} \rfloor}
+\newcommand{\seq}[2][n]{\left\{ {#2} \right\}_{#1=1}^\infty}
+\newcommand{\paren}[1]{\left( {#1} \right)}
+\newcommand{\series}[2]{\displaystyle \sum_{ {#1} }^{ {#2} }}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bQ}{\mathbb{Q}}
+
+% Math and symbol packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{derivative}
+
+% Formatting
+\usepackage{inputenc}
+\usepackage[left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+
+% Spacing formats
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{-2pt}
+	\setlength{\belowdisplayskip}{5pt}
+}
+
+% Actual content
+\begin{document}
+\pagestyle{fancy}
+\setlength{\headheight}{14.49998pt}
+\fancyhead[L]{Trevor Swan}
+\fancyhead[C]{\textbf{MATH321 - HW6}}
+\fancyhead[R]{10/11/24}
+\fancyfoot[C]{\thepage}
+
+% Begin Problem 1
+\noindent \textbf{(2.5.2)} Prove \underline{Proposition 2.5.5}, that is, for $-1<r<1$, prove
+
+\begin{align*}
+	\series{n=0}{\infty}r^n=\frac{1}{1-r}
+\end{align*}
+
+\noindent given that the geometric series $\series{n=0}{\infty}r^n$ converges.
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\newpage
+
+% Begin Problem 2
+\noindent \textbf{(2.5.3)} Decide the convergence or divergence of the following series.
+
+\noindent (a) $\series{n=1}{\infty}\frac{3}{9n+1}$
+
+\begin{proof}
+	\lipsum[1][1-5]
+\end{proof}
+
+\noindent (b) $\series{n=1}{\infty}\frac{1}{2n-1}$
+
+\begin{proof}
+	\lipsum[1][1-5]
+\end{proof}
+
+\noindent (c) $\series{n=1}{\infty}\frac{(-1)^n}{n^2}$
+
+\begin{proof}
+	\lipsum[1][1-5]
+\end{proof}
+
+\noindent (d) $\series{n=1}{\infty}\frac{1}{n(n+1)}$
+
+\begin{proof}
+	\lipsum[1][1-5]
+\end{proof}
+
+\noindent (e) $\series{n=1}{\infty}ne^{-n^2}$
+
+\begin{proof}
+	\lipsum[1][1-5]
+\end{proof}
+
+\newpage
+
+% Begin Problem 3
+\noindent \textbf{(2.5.14)} Suppose $\series{n=1}{\infty}x_n$ converges and $x_n\ge0$ for all $n$. Prove that $\series{n=1}{\infty} x_n^2$ converges.
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\newpage
+
+% Begin Problem 4
+\noindent \textbf{(3.1.1)} Find the limit (and prove it of course) or prove that the limit does not exist.
+
+\noindent (a) $\limit{x\to c} \sqrt{x}$, for $c\ge0$
+
+\begin{proof}
+	\lipsum[1][1-5]
+\end{proof}
+
+\noindent (b) $\limit{x\to c}x^2 + x + 1$, for $c\in\bR$
+
+\begin{proof}
+	\lipsum[1][1-5]
+\end{proof}
+
+\noindent (c) $\limit{x\to0}x^2\cos\paren{\frac{1}{x}}$
+
+\begin{proof}
+	\lipsum[1][1-5]
+\end{proof}
+
+\noindent (d) $\limit{x\to0}\sin\paren{\frac{1}{x}}\cos\paren{\frac{1}{x}}$
+
+\begin{proof}
+	\lipsum[1][1-5]
+\end{proof}
+
+\noindent (e) $\limit{x\to0}\sin\paren{0}\cos\paren{\frac{1}{x}}$
+
+\begin{proof}
+	\lipsum[1][1-5]
+\end{proof}
+\newpage
+
+% Begin Problem 5
+\noindent \textbf{(3.1.2)} Prove \underline{Corollary 3.1.10}, that is, let $S\subset\bR$ and let $c$ be a cluster point of $S$. Suppose $f:S\to\bR$ is a function such that the limit of $f(x)$ as $x$ goes to $c$ exists. Suppose there are two real numbers $a$ and $b$ such that
+
+\begin{align*}
+	a\le f(x)\le b \qquad \text{for all }x\in S\setminus\set{c}
+\end{align*}
+\noindent Then
+\begin{align*}
+	a\le\limit{x\to c}f(x)\le b.
+\end{align*}
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\end{document}
