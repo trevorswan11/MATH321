@@ -3,9 +3,9 @@
 % Custom Commands
 \newcommand{\set}[1]{\left\{ {#1} \right\}}
 \newcommand{\limit}[1]{\displaystyle \lim_{ {#1} }}
-\newcommand{\limtoinf}[1][n]{\lim_{ {#1} \to \infty}}
-\newcommand{\liminftoinf}[1][n]{\liminf_{ {#1} \to \infty}}
-\newcommand{\limsuptoinf}[1][n]{\limsup_{ {#1} \to \infty}}
+\newcommand{\limtoinf}[1][n]{\displaystyle\lim_{ {#1} \to \infty}}
+\newcommand{\liminftoinf}[1][n]{\displaystyle\liminf_{ {#1} \to \infty}}
+\newcommand{\limsuptoinf}[1][n]{\displaystyle\limsup_{ {#1} \to \infty}}
 \newcommand{\abs}[1]{\left| {#1} \right|}
 \newcommand{\ceil}[1]{\lceil {#1} \rceil}
 \newcommand{\floor}[1]{\lfloor {#1} \rfloor}
@@ -55,7 +55,24 @@
 \noindent given that the geometric series $\series{n=0}{\infty}r^n$ converges.
 
 \begin{proof}
-	\lipsum[1]
+	Let $S_k$ be the partial sum of the series up to the $k$-th term of the series, that is $S_k=\sum{n=0}{\infty}=1+r+r^2+\dots+r^k$. We must first show that $S_k=\frac{1-r^{k+1}}{1-r}$ for a finite $k$ and $r\neq1$. For the base case, take $k=0$ so $S_0=1$ and the formula gives $S_0=\frac{1-r^1}{1-r}=1$, so this holds for $k=0$. Assume this holds for some $k$, so $S_k=1+r+r^2+\dots+r^k=\frac{1-r^{k+1}}{1-r}$. We must show that this holds for $k+1$, or that $S_{k+1}=1+r+r^2+\dots+r^{k+1}=\frac{1-r^{k+2}}{1-r}$. Notice that $S_{k+1}=S_k+r^{k+1}$, so we have $S_{k+1}=\frac{1-r^{k+1}}{1-r}+r^{k+1}$. We can then simply this expression as
+	
+\begin{align*}
+	S_{k+1}=&\frac{1-r^{k+1}}{1-r}+\frac{(1-r)r^{k+1}}{1-r} && \text{Common denominator} \\
+	=&\frac{1-r^{k+1}+r^{k+1}-r^{k+2}}{1-r} && \text{Expand the second term} \\
+	=& \frac{1-r^{k+2}}{1-r} && \text{as required}
+\end{align*}
+
+This proves that the partial sums $S_k=\frac{1-r^{k+1}}{1-r}$. If we take the limit of the partial sums as $k\to\infty$, we can use the fact that since $-1<r<1$, $\limtoinf[k]r^{k+1}=0$. Therefore we have that
+
+\begin{align*}
+	\limtoinf[k]S_k=&\limtoinf[k]\frac{1-r^{k+1}}{1-r} \\
+	=& \frac{1}{1-r}\cdot\limtoinf[k]\paren{1-r^{k+1}} && \text{Factor out scalar} \\
+	=& \frac{1}{1-r}\paren{1- \limtoinf[k]r^{k+1}} && \text{Limit algebra} \\ 
+	=& \frac{1}{1-r}\cdot\paren{1-0} && \text{Use }\limtoinf[k]r^{k+1}=0
+\end{align*}
+
+Thus showing that as the number of terms in the partial sums tends to $\infty$, we have that $\limtoinf[k]S_k=\series{n=0}{\infty}r^n=\frac{1}{1-r}$. Hence given $-1<r<1$, $\series{n=0}{\infty}r^n$ converges to $\frac{1}{1-r}$, as required.
 \end{proof}
 
 \newpage
@@ -66,31 +83,67 @@
 \noindent (a) $\series{n=1}{\infty}\frac{3}{9n+1}$
 
 \begin{proof}
-	\lipsum[1][1-5]
+	First, notice that $\frac{3}{9n+1}>0$ for all $n\in\bN$. We will compare this to $\frac{1}{n}$, which is also positive for all $n$. We can use the limit comparison test as follows
+	
+\begin{align*}
+	\limtoinf\frac{\frac{3}{9n+1}}{\frac{1}{n}}=\limtoinf\frac{3n}{9n+1}=\limtoinf\frac{3}{9+\frac{1}{n}}=\frac{3}{9}
+\end{align*}
+
+Note that the last equality holds as $\limtoinf\frac{1}{n}=0$. Since we have used the limit comparison test to compare $\series{n=1}{\infty}\frac{1}{n}$ and $\series{n=1}{\infty}\frac{3}{9n+1}$, we have shown that $\series{n=1}{\infty}\frac{3}{9n+1}$ diverges as $\series{n=1}{\infty}\frac{1}{n}$ diverges and both series must either both converge or diverge if $0<\limtoinf\frac{a_n}{b_n}<\infty$.
 \end{proof}
+
 
 \noindent (b) $\series{n=1}{\infty}\frac{1}{2n-1}$
 
 \begin{proof}
-	\lipsum[1][1-5]
+	Notice again that $\frac{1}{2n-1}>0$ for all $n\in\bN$. We will compare this to $\frac{1}{n}$, which is also positive for all $n$. We can use the limit comparison test as follows
+	
+\begin{align*}
+	\limtoinf\frac{\frac{1}{2n-1}}{\frac{1}{n}}=\limtoinf\frac{n}{2n-1}=\limtoinf\frac{1}{2-\frac{1}{n}}=\frac{1}{2}
+\end{align*}
+
+Since we have used the limit comparison test to compare $\series{n=1}{\infty}\frac{1}{n}$ and $\series{n=1}{\infty}\frac{1}{2n-1}$, we have shown that the series diverges as $\series{n=1}{\infty}\frac{1}{n}$ diverges as $\frac{1}{2}$ is a positive constant.
 \end{proof}
 
 \noindent (c) $\series{n=1}{\infty}\frac{(-1)^n}{n^2}$
 
 \begin{proof}
-	\lipsum[1][1-5]
+	We will prove this using the alternating series test, which is proved on \underline{J. Lebl pp.101}. The test states that if $\seq{x_n}$ is a monotone decreasing sequence of positive real number such that $\limtoinf x_n=0$, then $\series{n=1}{\infty}(-1)^nx_n$ converges. We must show, therefore, that given $x_n=\frac{1}{n^2},$ $\seq{x_n}$ is a monotone decreasing sequence where $x_n\ge 0$ for all $n\in\bN$ and that $\limtoinf\frac{1}{n^2}=0$. 
+	
+	Firstly, note that $\frac{1}{n^2}\ge0$ for all $n\in\bN$ as $n^2\ge0$. Next, we define $x_{n+1}=\frac{1}{(n+1)^2}$, and we know that $n^2\le(n+1)^2$ for all $n$ and hence $\frac{1}{n^2}\ge\frac{1}{(n+1)^2}$. Therefore $x_n\ge x_{n+1}$ so we have shown that $x_n$ is monotone decreasing and positive for all $n$. We can formally write that $x_n$ is monotone decreasing and bounded below by zero, so $\inf x_n = 0$, and hence the MCT tells us that $\limtoinf x_n=\limtoinf\frac{1}{n^2}=0$. Therefore as $\limtoinf\frac{1}{n^2}=0$ and $\frac{1}{n^2}$ is monotone decreasing, the series $\series{n=1}{\infty}\frac{(-1)^n}{n^2}$ converges.
 \end{proof}
 
 \noindent (d) $\series{n=1}{\infty}\frac{1}{n(n+1)}$
 
 \begin{proof}
-	\lipsum[1][1-5]
+	First note that $\frac{1}{n}-\frac{1}{n+1}=\frac{1}{n(n+1)}$. This can be supported by
+	
+\begin{align*}
+	\frac{1}{n}-\frac{1}{n+1}=\frac{(n+1)}{n(n+1)}-\frac{n}{n(n+1)}=\frac{(n+1)-n}{n(n+1)}=\frac{1}{n(n+1)}
+\end{align*}
+
+\noindent Hence we can express the series $\series{n=1}{\infty}\frac{1}{n(n+1)}$ as the telescoping sum
+
+\begin{align*}
+	\series{n=1}{\infty}\frac{1}{n(n+1)}=&\series{n=1}{\infty}\frac{1}{n}-\series{n=1}{\infty}\frac{1}{n+1} \\
+	=&\paren{1-\frac{1}{2}}+\paren{\frac{1}{2}-\frac{1}{3}}+\paren{\frac{1}{3}-\frac{1}{4}}+\dots && \text{Write out the first few terms} \\
+	=&1 && \text{All terms after 1 cancel out}
+\end{align*}
+
+	Therefore the series $\series{n=1}{\infty}\frac{1}{n(n+1)}$ converges as it is a telescoping series and more specifically converges to 1.
+
 \end{proof}
 
 \noindent (e) $\series{n=1}{\infty}ne^{-n^2}$
 
 \begin{proof}
-	\lipsum[1][1-5]
+	We will choose to compare the series $\series{n=1}{\infty}\frac{n}{e^{n^2}}$ to $\series{n=1}{\infty}\frac{n}{n^3}$. First note that both $ne^{-n^2}$ and $\frac{n}{n^3}$ are positive for all $n\in\bN$. To justify this choice and , compare $e^{n^2}$ to $n^3$ (continuous functions) as
+	
+\begin{align*}
+	\limtoinf\frac{e^{n^2}}{n^3}\overset{LH}{=}\limtoinf\frac{\frac{d}{dn}e^{n^2}}{\frac{d}{dn}n^3}=\limtoinf\frac{2ne^{n^2}}{3n}\to\infty \qquad \paren{\frac{\text{Exponential}}{\text{Linear}}\to\infty}.
+\end{align*}
+
+The limit of the terms tends to infinity showing that $e^{n^2}\ge n^3$ and hence $\frac{1}{e^{n^2}}\le\frac{1}{n^3}$. Consequently we have that $\series{n=1}{\infty}ne^{-n^2}\le\series{n=1}{\infty}\frac{n}{n^3}=\series{n=1}{\infty}\frac{1}{n^2},$ and $\series{n=1}{\infty}\frac{1}{n^2}$ converges by the p-series test with $p=2$. In summary we have shown that $0\le\series{n=1}{\infty}ne^{-n^2}\le\frac{1}{n^2}$. Therefore by the comparison test, $\series{n=1}{\infty}ne^{-n^2}$ converges.
 \end{proof}
 
 \newpage
@@ -99,7 +152,17 @@
 \noindent \textbf{(2.5.14)} Suppose $\series{n=1}{\infty}x_n$ converges and $x_n\ge0$ for all $n$. Prove that $\series{n=1}{\infty} x_n^2$ converges.
 
 \begin{proof}
-	\lipsum[1]
+	To determine the convergence of $\series{n=1}{\infty} x_n^2$, we can compare it to $\series{n=1}{\infty}x_n$. Because  $\series{n=1}{\infty}x_n$ is convergent, it implies the as $n$ gets sufficiently large, $x_n\to0$. In other words, the convergence of  $\series{n=1}{\infty}x_n$ implies that $\limtoinf x_n=0$. Therefore we have that $0<x<1$ for sufficiently large $n$. Notice that for $\series{n=1}{\infty} x_n^2$, we have $x_n^2\le x_n$ for sufficiently large $n$. Note that we have to prove this expression, and also that we only care about long term behavior as that is what ultimately determines convergence. We therefore have
+	
+\begin{align*}
+	x^2\le&x&&\text{Want to show for }0<x<1 \\
+	x - x^2\ge&0&&\text{Subtract }x\text{ from both sides} \\
+	x(1-x)\ge&0&&\text{Factor the expression}
+\end{align*} 
+
+The following statement is true as $0<x<1$ is given and hence $x$ and $1-x$, the factors, are both always positive. Therefore $x^2\le x$ holds for all $0<x<1$.
+
+Let $M\in\bN$ be given such that $n\ge M$, thus we are comparing the tails of the series when $0<x<1$ holds. We therefore have that $0\le x_n^2\le x_n$ for all $n\ge M$. Note that $\series{n=1}{\infty}x_n$ converges for $n\ge M$ as a series converges if and only if its tails converge. This also means that if a series tails converge, then the series also converges. Since $\series{n=1}{\infty}x_n$ converges and the terms in the long term bound the terms of $\sum x_n^2$, $\series{n=1}{\infty} x_n^2$  must also converge by the comparison test.
 \end{proof}
 
 \newpage
