@@ -173,32 +173,43 @@ Let $M\in\bN$ be given such that $n\ge M$, thus we are comparing the tails of th
 \noindent (a) $\limit{x\to c} \sqrt{x}$, for $c\ge0$
 
 \begin{proof}
-	\lipsum[1][1-5]
+	Assume $f(x)=\sqrt{x}$ and $f:S\to\bR$ where $S=[0,\infty\}$. We will suggest that as the square root is a continuous function, $L=\sqrt{c}$. Therefore we must show that for every $\epsilon>0$, there exists some $\delta>0$ for which $\abs{f(x)-L}=\abs{\sqrt{x}-\sqrt{c}}<\epsilon$ holds whenever $x\in S\setminus\set{c}$ satisfies $\abs{x-c}<\delta$. 
+	
+We can multiply $\abs{\sqrt{x}-\sqrt{c}}$ by its conjugate to get $\abs{\sqrt{x}-\sqrt{c}}=\frac{\abs{x-c}}{\abs{\sqrt{x}+\sqrt{c}}}$. Note that since $\sqrt{x}$ and $\sqrt{c}$ are both always positive, we can ignore the absolute value of its sum and can further say that $\sqrt{x}+\sqrt{c}\ge\sqrt{c}$. Consequently $\frac{1}{\sqrt{x}+\sqrt{c}}\le\frac{1}{\sqrt{c}}$, leading us to $\abs{\sqrt{x}-\sqrt{c}}\le\frac{\abs{x-c}}{\sqrt{c}}$. To ensure the inequality $\abs{\sqrt{x}-\sqrt{c}}<\epsilon$ is satisfied, we need $\frac{\abs{x-c}}{\sqrt{c}}<\epsilon$ to hold as it bounds $\abs{\sqrt{x}-\sqrt{c}}$. This gives us $\abs{x-c}<\epsilon\sqrt{c}$ and thus we choose $\delta=\epsilon\sqrt{c}$. Note that for $c=0$, we have $\abs{\sqrt{x}-0}=\sqrt{x}$ and to ensure $\sqrt{x}<\epsilon$, we need $x<\epsilon^2$. Hence we can choose $\delta=\epsilon^2$ to guarantee that for $x<\delta$, we have $\sqrt{x}<\epsilon$. Therefore $\limit{x\to c} \sqrt{x}=c$, as required.
 \end{proof}
 
 \noindent (b) $\limit{x\to c}x^2 + x + 1$, for $c\in\bR$
 
 \begin{proof}
-	\lipsum[1][1-5]
+	Let $f(x)=x^2+x+1$, and we want to show that for every $\epsilon>0$, there exists a $\delta>0$ such that whenever $\abs{x-c}<\delta$, it holds that 
+	
+\begin{align*}
+	\abs{f(x)-f(c)}=\abs{(x^2+x+1)-(c^2+c+1)}=&\abs{x^2-c^2+x-c} \\
+	=&\abs{(x-c)(x+c)+(x-c)} \\
+	=&\abs{x-c}\cdot\abs{x+c+1} <\epsilon
+\end{align*}
+
+Note that we can rewrite $\abs{x+c+1}=\abs{(x-c)+(2c+1)}$, and by the triangle inequality we have $\abs{(x-c)+(2c+1)}\le\abs{x-c}+\abs{2c+1}$. As $\abs{x-c}<\delta$, we have $\abs{x+c+1}\le\abs{2c+1}+\delta$. Consequently we can write $\abs{x-c}\cdot\abs{x+c+1}\le\abs{x-c}\cdot\paren{\abs{2c+1}+\delta}<\epsilon$, and hence we need to fulfill $\abs{x-c}\cdot\paren{\abs{2c+1}+\delta}<\epsilon$. Choose $\delta=\min\paren{1,\frac{\epsilon}{\abs{2c+1}+1}}$. This choice ensures that $\abs{x-c}$ is kept sufficiently small and that the product $\abs{x-c}\cdot\paren{\abs{2c+1}+\delta}$ is less than $\epsilon$. Thus $\limit{x\to c}x^2 + x + 1=c^2+c+1$ as required.
 \end{proof}
 
 \noindent (c) $\limit{x\to0}x^2\cos\paren{\frac{1}{x}}$
 
 \begin{proof}
-	\lipsum[1][1-5]
+	Let $f(x)=x^2\cos\paren{\frac{1}{x}}$. We will use the squeeze theorem to prove its limit. First note that the cosine function is bounded by 1, meaning that $\abs{\cos n}\le 1$, where $n=\frac{1}{x}$ in this case (holds for all $x\neq0$). We can say that $-1\le\cos\frac{1}{x}\le1$. Multiplying this expression by $x^2$ maintains the validity as $x^2\ge0$ for all $x$, and hence $-x^2\le f(x)\le x^2$. Therefore $f(x)$ is bounded below by $-x^2$ and above by $x^2$ and $f(x)$ will converge to the limits of its bounds if they are equal. Taking the limits of the bounding functions gives us $\limit{x\to0}-x^2=0$ and $\limit{x\to0}x^2=0$. Since $f(x)$ is squeezed between $-x^2$ and $x^2$ as $x\to0$, $\limit{x\to0}-x^2\le \limit{x\to0} f(x)\le \limit{x\to0} x^2$. Hence by the squeeze theorem we have $\limit{x\to0} f(x)=0$ and thus $\limit{x\to0} x^2\cos\paren{\frac{1}{x}}=0$, as required.
 \end{proof}
 
 \noindent (d) $\limit{x\to0}\sin\paren{\frac{1}{x}}\cos\paren{\frac{1}{x}}$
 
 \begin{proof}
-	\lipsum[1][1-5]
+	Note that individual components of the function $f(x)=\sin\paren{\frac{1}{x}}\cos\paren{\frac{1}{x}}$, $\sin\paren{\frac{1}{x}}$ and $\cos\paren{\frac{1}{x}}$ are both bounded by the interval $[-1,1]$. Note that the $f(x)$ and its components are discussed in this context with $x\neq0$. Therefore their product cannot exceed these bounds and hence we have that $-1\le\sin\paren{\frac{1}{x}}\cos\paren{\frac{1}{x}}\le1$, equivalently $-1\le f(c)\le 1$. Since $f(x)$ oscillates between -1 and 1, as those are its bounds due to the behavior of sine and cosine, $f(x)$ cannot converge to a limit. Hence $\limit{x\to0}\sin\paren{\frac{1}{x}}\cos\paren{\frac{1}{x}}$ does not exist, as required.
 \end{proof}
 
-\noindent (e) $\limit{x\to0}\sin\paren{0}\cos\paren{\frac{1}{x}}$
+\noindent (e) $\limit{x\to 0}\sin\paren{x}\cos\paren{\frac{1}{x}}$
 
 \begin{proof}
-	\lipsum[1][1-5]
+	Let $f(x)=\sin\paren{x}\cos\paren{\frac{1}{x}}$. As per our argument in part (c), we know that  $\abs{\cos n}\le 1$ and hence $-1\le\cos\frac{1}{x}\le1$ for all $x\neq{0}$. This is acceptable as the function does not need to contain its limit, but it must approach it. To show this behavior, we multiply the previous expression by $\sin x$ to get an expression contending with $f(x)$. Thus we have $-\sin x\le\sin\paren{x}\cos\paren{\frac{1}{x}}\le\sin x$. This means that $f(x)$ is bounded below by $-\sin x$ and above by $\sin x$, and we can use the squeeze theorem as done in part (c) to prove convergence. Take the limits of the bounds to get $\limit{x\to0}-\sin x=0$ and $\limit{x\to0}\sin x$. This is known to be true as $\sin x$ is continuous and approaches 0 as $x$ approaches 0. Since $\sin\paren{x}\cos\paren{\frac{1}{x}}$ is squeezed by $-\sin x$ and $\sin x$, it must converge to their limits, which agree to be 0. Therefore, $\limit{x\to 0}\sin\paren{x}\cos\paren{\frac{1}{x}}=0$, as required.
 \end{proof}
+
 \newpage
 
 % Begin Problem 5
@@ -213,7 +224,7 @@ Let $M\in\bN$ be given such that $n\ge M$, thus we are comparing the tails of th
 \end{align*}
 
 \begin{proof}
-	\lipsum[1]
+	Let $L\coloneq \limit{x\to c}f(x)$ as it is given to exist. This means that for every $\epsilon>0$, there exists a $\delta>0$ such that $\abs{f(x)-L}<\epsilon$ whenever $\abs{x-c}<\delta$ for $x\in S\setminus\set{c}$. We want to show that given two real numbers $a,b$, with $a\le f(x)\le b$ for $x\in S\setminus\set{c}$, that $a\le L\le b$. We can express $\abs{f(x)-L}<\epsilon$ as $L-\epsilon<f(x)<L+\epsilon$ by the definition of the absolute value. We will break up this equality as $L-\epsilon<f(x)$ and $f(x)<L+\epsilon$ in order to better reach our end goal. Since $f(x)\le b$ is given, we have $L-\epsilon< f(x)\le b$ which is equivalent to $L-\epsilon\le b\implies L\le b+\epsilon$. Similarly for $a$, we are given that $a\le f(x)$ and hence $a\le f(x)<L+\epsilon$ which is equivalent to $a\le L+\epsilon\implies a-\epsilon\le L$. Note that in the previous derivations of the inequalities, we can choose $\le$ as a relation as limits allow for, but do not require, equality. We can recombine the inequalities $a-\epsilon\le L$ and $L\le b+\epsilon$ to yield $a-\epsilon\le L\le b+\epsilon$. Since $\epsilon>0$ is arbitrary, we can say generally that $a\le L\le b$, and hence $a\le\limit{x\to c}f(x)\le b$, as required.
 \end{proof}
 
 \end{document}
