@@ -1,0 +1,95 @@
+\documentclass[12pt]{article}
+
+% Custom Commands
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\limit}[1]{\displaystyle \lim_{ {#1} }}
+\newcommand{\limtoinf}[1][n]{\displaystyle\lim_{ {#1} \to \infty}}
+\newcommand{\liminftoinf}[1][n]{\displaystyle\liminf_{ {#1} \to \infty}}
+\newcommand{\limsuptoinf}[1][n]{\displaystyle\limsup_{ {#1} \to \infty}}
+\newcommand{\abs}[1]{\left| {#1} \right|}
+\newcommand{\ceil}[1]{\lceil {#1} \rceil}
+\newcommand{\floor}[1]{\lfloor {#1} \rfloor}
+\newcommand{\seq}[2][n]{\left\{ {#2} \right\}_{#1=1}^\infty}
+\newcommand{\paren}[1]{\left( {#1} \right)}
+\newcommand{\series}[2]{\displaystyle \sum_{ {#1} }^{ {#2} }}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bQ}{\mathbb{Q}}
+
+% Math and symbol packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{derivative}
+
+% Formatting
+\usepackage{inputenc}
+\usepackage[left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+
+% Spacing formats
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{-2pt}
+	\setlength{\belowdisplayskip}{5pt}
+}
+
+% Actual content
+\begin{document}
+\pagestyle{fancy}
+\setlength{\headheight}{14.49998pt}
+\fancyhead[L]{Trevor Swan}
+\fancyhead[C]{\textbf{MATH321 - HW7}}
+\fancyhead[R]{10/23/24}
+\fancyfoot[C]{\thepage}
+
+% Begin Problem 1
+\noindent \textbf{(3.1.5)} Let $A\subset S$. Show that if $c$ is a cluster point of $A$, then $c$ is a cluster point of $S$. \textit{Note the difference from \underline{Proposition 3.1.15}}
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\newpage
+
+% Begin Problem 2
+\noindent \textbf{(3.1.12)} Prove \underline{Proposition 3.1.17}, that is, Let $S\subset\bR$ be such that $c$ is a cluster point of both $S\cap\paren{-\infty, c}$ and $S\cap\paren{c,\infty}$, let $f:S\to\bR$ be a function, and let $L\in\bR$. Then $c$ is a cluster point of $S$ and
+
+\begin{align*}
+	\limit{x\to c}f(c)=L\qquad\text{if and only if}\qquad\limit{x\to c^-}f(x)=\limit{x\to c^+}f(x)=L
+\end{align*}
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\newpage
+
+% Begin Problem 3
+\noindent \textbf{(3.2.2)} Using the definition of continuity directly prove that $f:\paren{0,\infty}\to\bR$ defined by $f(x)\coloneq\frac{1}{x}$ is continuous.
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\newpage
+
+% Begin Problem 4
+\noindent \textbf{(3.2.13)} Let $f:S\to\bR$ be a function and $c\in S$, such that for every sequence $\seq{x_n}$ in $S$ with $\limtoinf x_n=c$, the sequence $\seq{f(x_n)}$ converges. Show that $f$ is continuous at $c$.
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\newpage
+
+% Begin Problem 5
+\noindent \textbf{(3.2.15)} Suppose $g:\bR\to\bR$ is a continuous function such that $g(0)=0$, and suppose $f:\bR\to\bR$ is such that $\abs{f(x)-f(y)}\le g(x-y)$ for all $x$ and $y$. Show that $f$ is continuous.
+
+\begin{proof}
+	\lipsum[1]
+\end{proof}
+
+\end{document}

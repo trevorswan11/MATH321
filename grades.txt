@@ -3,7 +3,7 @@ List of Grades by HW assignment:
 - HW2: 21/25
 - HW3: 20.5/25 
 - HW4: 25/25
-- HW5: /25
+- HW5: 14/25
 - HW6: /25
 - HW7: /25
 - HW8: /25
