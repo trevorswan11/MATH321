@@ -62,7 +62,23 @@
 \end{align*}
 
 \begin{proof}
-	\lipsum[1]
+	We begin with the forward direction. Assume that $\limit{x\to c}f(x)=L$. By the definition of the limit, for every $\epsilon>0$, there exists some $\delta>0$ such that $\abs{f(x)-L}<\epsilon$ whenever $0<\abs{x-c}<\delta$. We can split this into two parts:
+	
+\begin{enumerate}
+	\item For the left-hand limit, $x\to c^-$: If $x<c$ and $0<c-x<\delta$, then $\abs{f(x)-L}<\epsilon$. Thus, $\limit{x\to c^-}f(x)=L$.
+	\item For the right-hand limit,  $x\to c^+$: If $x>c$ and $0<x-c<\delta$, then $\abs{f(x)-L}<\epsilon$. Thus, $\limit{x\to c^+}f(x)=L$.
+\end{enumerate}
+
+\noindent Since both limits equal $L$, we conclude that $\limit{x\to c^-}f(x)=\limit{x\to c^+}f(x)=L$.
+
+\indent Now we must prove the reverse direction. Suppose that $\limit{x\to c^-}f(x)=\limit{x\to c^+}f(x)=L$. By the definition of left- and right-hand limits, we have:
+
+\begin{enumerate}
+	\item For the left-hand limit, given $\epsilon>0$, there exists some $\delta_1>0$ such that $\abs{f(x)-L}<\epsilon$ whenever $0<c-x<\delta_1$.
+	\item For the right-hand limit, given the same arbitrarily chosen $\epsilon>0$, there exists some $\delta_2>0$ such that $\abs{f(x)-L}<\epsilon$ whenever $0<x-c<\delta_1$.
+\end{enumerate}
+
+\indent We must connect $\delta_1$ and $\delta_2$. Let $\delta = \min\paren{\delta_1,\delta_2}$. This ensures that for all $x$ sufficiently close to $c$, the function values $f(x)$ are close to $L$ as this $x$ satisfies $0<\abs{x-c}<\delta$ (as it was said to be sufficiently close). Here, $x$ will either fall into the interval $\paren{c-\delta, c}$ (for $x<c$) or $\paren{c,c+\delta}$ (for $x>c$). Therefore for such $x$ we can say $\abs{f(x)-L}<\epsilon$. By definition this shows that $\limit{x\to c}f(c)=L$, as required.
 \end{proof}
 
 \newpage
@@ -71,7 +87,19 @@
 \noindent \textbf{(3.2.2)} Using the definition of continuity directly prove that $f:\paren{0,\infty}\to\bR$ defined by $f(x)\coloneq\frac{1}{x}$ is continuous.
 
 \begin{proof}
-	\lipsum[1]
+	To directly prove that the function $f:\paren{0,\infty}\to\bR$ given by $f(x)\coloneq\frac{1}{x}$ is continuous, we must show that at any point $c\in\paren{0,\infty}$, the epsilon-delta definition of continuity holds. That is, we need to show that for every $\epsilon>0$, there exists some $\delta>0$ such that if $0<\abs{x-c}<\delta$, then $\abs{f(x)-f(c)}<\epsilon$.
+
+\indent We begin by computing $\abs{f(x)-f(c)}=\abs{\frac{1}{x}-\frac{1}{c}}$. We can simplify this by finding a common denominator as $\abs{\frac{1}{x}-\frac{1}{c}}=\abs{\frac{c-x}{xc}}=\frac{\abs{c-x}}{\abs{xc}}$. Now we must show that this expression is lees than $\epsilon$, or that $\frac{\abs{c-x}}{\abs{xc}}<\epsilon$. We can rewrite the previous inequality as $\abs{c-x}<\epsilon\abs{xc}$.
+
+\indent We must now find $\delta$, which requires controlling both $\abs{x-c}$ and $\abs{xc}$. As $c>0$, set $\abs{x-c}<\delta$. We can expand this to be $-\delta<x-c<\delta\implies c-\delta<x<c+\delta$. If we take $\delta\le\frac{c}{2}$, then this ensures that $x$ remains close to $c$. Thus we have $c-\frac{c}{2}<x<c+\frac{c}{2}\implies\frac{c}{2}<c<\frac{3c}{2}$. As this $x$ must be greater than $\frac{c}{2}$, we can bound $\abs{xc}$ as $\abs{xc}>\paren{\frac{c}{2}c}=\frac{c^2}{2}$. We can substitute these back into $\abs{c-x}<\epsilon\abs{xc}$ to yield $\abs{c-x}<\epsilon\frac{c^2}{2}$. This allows us to choose $\delta=\min\paren{\frac{c}{2}, \frac{\epsilon c^2}{2}}$.
+
+\indent We can now proceed by verifying this choice of $\delta$. We know from above that if $\abs{x-c}<\delta$, then $\abs{c-x}<\frac{\epsilon c^2}{2}$. We also have that $\abs{xc}>\frac{c^2}{2}$,  so
+
+\begin{align*}
+	\abs{f(x)-f(c)}=\frac{\abs{c-x}}{\abs{xc}}<\frac{\frac{\epsilon c^2}{2}}{\frac{c^2}{2}}=\epsilon. 
+\end{align*}
+
+\noindent and hence $f(x)\coloneq\frac{1}{x}$ is continuous at every $c\in\paren{0,\infty}$, as required.
 \end{proof}
 
 \newpage
@@ -80,7 +108,9 @@
 \noindent \textbf{(3.2.13)} Let $f:S\to\bR$ be a function and $c\in S$, such that for every sequence $\seq{x_n}$ in $S$ with $\limtoinf x_n=c$, the sequence $\seq{f(x_n)}$ converges. Show that $f$ is continuous at $c$.
 
 \begin{proof}
-	\lipsum[1]
+	We know that $f$ satisfies the property that for every sequence $\seq{x_n}$ in $S$ with $\limtoinf x_n=c$, the sequence $\seq{f(x_n)}$ converges. We must show continuity at $c$, meaning that $\limit{x\to c}f(x)=f(c)$.
+	
+\indent Assume for contradiction that $f$ is not continuous at $c$. By definition of continuity, it must consequently be the case that $\limit{x\to c}f(x)\neq f(c)$. This implies that there exists some sequence $\seq{x_n}$ in $S$ such that $\limtoinf x_n=c$, but that the corresponding sequence $\seq{f(x_n)}$ does not converge to $f(c)$. However, we have assumed that for every sequence $\seq{x_n}$ with $\limtoinf x_n=c$, the corresponding sequence $\seq{f(x_n)}$ does, in fact, converge. Thus we arrive at a contradiction indicating that our assumption of $f$ not being continuous is false. Therefore $f$ is continuous at $c$, as required.
 \end{proof}
 
 \newpage
@@ -89,7 +119,15 @@
 \noindent \textbf{(3.2.15)} Suppose $g:\bR\to\bR$ is a continuous function such that $g(0)=0$, and suppose $f:\bR\to\bR$ is such that $\abs{f(x)-f(y)}\le g(x-y)$ for all $x$ and $y$. Show that $f$ is continuous.
 
 \begin{proof}
-	\lipsum[1]
+	We are given that $\abs{f(x)-f(y)}\le g(x-y)$, and letting $y=c$, we have $\abs{f(x)-f(c)}\le g(x-c)$. We can do this as this inequality is given to hold true for all $x,y\in\bR$, and we know $c\in\bR$. We proceed by analyzing the behavior of $g$ as $x\to c$. In other words, we must see the behavior of $\limit{x\to c}g(x-c)$. Since $x\to c$ implies that $x-c\to 0$, we have that $\limit{x\to c}g(x-c)=g(0)=0$.
+
+\indent We will proceed with the use of the squeeze theorem. Since $\abs{f(x)-f(c)}\le g(x-c)$, we have that $-g(x-c)\le f(x)-f(c)\le g(x-c)$. We take the limit of this expression as:
+
+\begin{align*}
+	\limit{x\to c}\paren{-g(x-c)\le f(x)-f(c)\le g(x-c)}=-\limit{x\to c}g(x-c)\le\limit{x\to c}f(x)-f(c)\le\limit{x\to c}g(x-c).
+\end{align*}
+
+\noindent Therefore we have that $\limit{x\to c}f(x)-f(c)=0$ by the squeeze theorem as $\limit{x\to c}g(x-c)=g(0)=0$. We thus conclude that $\limit{x\to c}\abs{f(x)-f(c)}=0$. As $f(c)$ is not dependent on $x$, we can rewrite this expression as $\limit{x\to c}\abs{f(x)}=\abs{f(c)}$. This shows that $f$ is continuous at $c$, and since $c$ was chosen arbitrarily, we therefore have that $f$ is continuous everywhere on $\bR$.
 \end{proof}
 
 \end{document}
