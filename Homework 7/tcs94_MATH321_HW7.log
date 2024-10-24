@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.26)  14 OCT 2024 12:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.3.26)  23 OCT 2024 23:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -346,7 +346,7 @@ Here is how much of TeX's memory you used:
  29100 multiletter control sequences out of 15000+600000
  563368 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 65i,11n,79p,334b,237s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 65i,11n,79p,917b,237s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Trevor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmbx12.pfb><C:/Users/Trevor/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmmi12.pfb><C:/Users/Trevor/AppData/Local/Programs/MiKTeX/fonts/type
@@ -360,7 +360,7 @@ Users/Trevor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8
 .pfb><C:/Users/Trevor/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmti12.pfb><C:/Users/Trevor/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/symbols/msbm10.pfb>
-Output written on tcs94_MATH321_HW7.pdf (5 pages, 120462 bytes).
+Output written on tcs94_MATH321_HW7.pdf (5 pages, 122593 bytes).
 PDF statistics:
  73 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
