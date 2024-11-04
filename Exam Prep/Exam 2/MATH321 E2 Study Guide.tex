@@ -1,0 +1,172 @@
+\documentclass[12pt]{article}
+
+% Custom Commands
+\newcommand{\set}[1]{\left\{ {#1} \right\}}
+\newcommand{\limit}[1]{\displaystyle \lim_{ {#1} }}
+\newcommand{\limtoinf}[1][n]{\displaystyle\lim_{ {#1} \to \infty}}
+\newcommand{\liminftoinf}[1][n]{\displaystyle\liminf_{ {#1} \to \infty}}
+\newcommand{\limsuptoinf}[1][n]{\displaystyle\limsup_{ {#1} \to \infty}}
+\newcommand{\abs}[1]{\left| {#1} \right|}
+\newcommand{\ceil}[1]{\lceil {#1} \rceil}
+\newcommand{\floor}[1]{\lfloor {#1} \rfloor}
+\newcommand{\seq}[2][n]{\left\{ {#2} \right\}_{#1=1}^\infty}
+\newcommand{\paren}[1]{\left( {#1} \right)}
+\newcommand{\series}[2]{\displaystyle \sum_{ {#1} }^{ {#2} }}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bQ}{\mathbb{Q}}
+
+% Math and symbol packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{derivative}
+
+% Formatting
+\usepackage{inputenc}
+\usepackage[left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+
+% Spacing formats
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{-2pt}
+	\setlength{\belowdisplayskip}{5pt}
+}
+
+% Actual content
+\begin{document}
+\pagestyle{fancy}
+\setlength{\headheight}{14.49998pt}
+\fancyhead[L]{Trevor Swan}
+\fancyhead[C]{\textbf{MATH321 - E2 Definitions}}
+\fancyhead[R]{10/28/24}
+\fancyfoot[C]{\thepage}
+
+\noindent \textbf{Facts about Sequences}
+
+\begin{enumerate}
+	\item Let $\seq{a_n}$ and $\seq{b_n}$ be such that $a_n\le x_n\le b_n$ for all $n\in\bN$. If $\seq{a_n}$ and $\seq{b_n}$ both converge to $x\in\bR$, then $\seq{x_n}$ must also converge to $x$.
+	\item Let $\seq{x_n}, \seq{y_n}$ be convergent sequences. Suppose that $x_n\le y_n$ for every $n\in\bN$. Then $\limtoinf x_n \le \limtoinf y_n$.
+	\item If $\seq{x_n}$ is a convergent sequence such that $x_n\ge0$ for all $n\in\bN$, then $\limtoinf x_n\ge0$.
+	\item Let $a,b\in\bR$ and $\seq{x_n}$ be a convergent sequence such that $a\le x_n\le b$ for all $n\in\bN$. Then $a\le \limtoinf x_n\le b$.
+	\item Addition, Subtraction, Multiplication, and Division can all be performed safely on limit expression provided they are both convergent and there is no division by 0.
+	\item Let $\seq{x_n}$ be a convergent sequence such that $x_n\ge 0$ for all $n\in\bN$. then $\limtoinf \sqrt{x_n}=\sqrt{\limtoinf x_n}$.
+	\item If $\seq{x_n}$ is a convergent sequence, then $\seq{\abs{x_n}}$ is a convergent sequence and $\limtoinf\abs{x_n}=\abs{\limtoinf x_n}$.
+\end{enumerate}
+
+\noindent \textbf{Convergence Tests}
+
+\begin{enumerate}
+	\item Let $\seq{x_n}$ be a sequence, and suppose there is an $x\in\bR$ and a sequence $\seq{a_n}$ such that $\limtoinf a_n =0$ and $\abs{x_n-x}\le a_n$ for all $n\in\bN$. Then the sequence $x_n$ converges to $x$.
+	\item Let $c>0$. (1) If $c<1$, then $\seq{c^n}$ converges to zero. (2) If $c>1$, then $\set{c^n : n\in\bN}$ is an unbounded set of $\bR$ and hence cannot converge.
+	\item Let $\seq{x_n}$ be a sequence such that $x_n\neq 0$ for all $n\in\bN$ and the limit $L\coloneq\limtoinf\abs{\frac{x_{n+1}}{x_n}}$ exists. Then, (1) If $0\le L<1$, then $\seq{x_n}$ converges to 0. (2) If $L>1$, then $\set{x_n : n\in\bN}$ is unbounded, and so $\seq{x_n}$ is divergent. (3) If $L=1$, the test is inconclusive.
+\end{enumerate}
+
+\noindent \textbf{Limit Superior \& Inferior}
+
+\begin{enumerate}
+	\item Let $\seq{x_n}$ be a bounded sequence. For each $n\in\bN$, define $a_n=\sup\set{x_k : k\ge n}$ and $b_n=\inf\set{x_k : k \ge n}$. Consider the sequences, $\seq{a_n}$ and $\seq{b_n}$. Define $\limsuptoinf x_n = \limtoinf a_n$ and $\liminftoinf x_n = \limtoinf b_n$, provided both limits exist.
+	\item Let $\seq{x_n}$ be a bounded sequence, and $\seq{a_n}$, $\seq{b_n}$ be as in the above definition. (1) The sequence $\seq{a_n}$ is bounded and monotone decreasing, while $\seq{b_n}$ is also bounded but is monotone increasing. In particular $\limsuptoinf x_n$ and $\liminftoinf x_n$ both exist. (2)$\limsuptoinf x_n=\inf\set{a_n : n\in\bN}=\inf\set{\sup\set{a_k : k\ge n} : n\in\bN}$ and $\liminftoinf x_n = \sup{b_n : n\in\bN}=\sup\set{\inf\set{b_k : k\ge n} : n\in\bN}$. (3) $\limsuptoinf x_n\ge\liminftoinf x_n$.
+	\item Given a bounded sequence $\seq{x_n}$, there exists subsequences $\seq[k]{x_{n_k}}$ and $\seq[k]{x_{m_k}}$ of $\seq{x_n}$ such that $\limit{k\to\infty} x_{n_k}=\limsuptoinf x_n$ and $\limit{k\to\infty} x_{m_k}=\liminftoinf x_n$.
+	\item A bounded sequence $\seq{x_n}$ converges if and only if $\limsuptoinf x_n=\liminftoinf x_n$. In fact, $\limsuptoinf x_n=\limtoinf x_n=\liminftoinf x_n$.
+	\item Suppose you have a bounded sequence $\seq{x_n}$ and $\seq[k]{x_{n_k}}$ is a subsequence. Then $\liminftoinf x_n\le\liminf_{k\to\infty} x_{n_k}\le\limsup_{k\to\infty} x_{n_k}\le\limsuptoinf x_n$.
+	\item A bounded sequence $\seq{x_n}$ converges to $x\in\bR$ if and only if every convergent subsequence converges to $x$.
+\end{enumerate}
+
+\noindent \textbf{Bolzano-Weierstrass Theorem}
+
+\begin{enumerate}
+	\item Every bounded sequence of real number must have a convergent subsequence.
+	\item We say that a sequence $\seq{x_n}$ diverges to infinity if, for every $k\in\bR$, there is some $M$ such that $x_n>k$ whenever $n\ge M$. In this case, we write $\limtoinf x_n\coloneq\infty$.
+	\item We say that a sequence $\seq{x_n}$ diverges to negative infinity if, for every $k\in\bR$, there is some $M$ such that $x_n<k$ whenever $n\ge M$. In this case, we write $\limtoinf x_n\coloneq-\infty$.
+	\item Let $\seq{x_n}$ be an unbounded sequence of real numbers. Define the sequence of extended real number $\seq{a_n}$ and $\seq{b_n}$ by $a_n=\sup\set{x_k : k\ge n}$, $b_n=\inf\set{x_k : k\ge n}$. If each $a_n$ and $b_n$ is a real number, then $\limsuptoinf x_n=\limtoinf a_n$ and $\liminftoinf x_n = \limtoinf b_n$.
+\end{enumerate}
+
+\noindent \textbf{Cauchy Sequences}
+
+\begin{enumerate}
+	\item Let $\seq{x_n}$ be a sequence of real numbers. Then $\seq{x_n}$ is said to be a cauchy sequence if, for every $\epsilon>0$, there is some $M\in\bN$ such that $\abs{x_n-x_M}<M\epsilon$ whenever $n,m\ge M$.
+	\item Cauchy sequences are bounded.
+	\item A sequence of real numbers is convergent if and only if it is cauchy.
+\end{enumerate}
+
+\noindent \textbf{Series}
+
+\begin{enumerate}
+	\item Given a sequence $\seq{x_n}$, we write the formal object $\series{n=0}{\infty} x_n$ and call it a series. A series $\series{n=0}{\infty} x_n$ converges if the sequence $\seq[k]{S_k}$ given by $S^k\coloneq\series{n=1}{k} x_n = x_1+x_2+x_3+\dots+x_k$ converges. The numbers $S_k$ are called partial sums. If $\series{n=0}{\infty} x_n$ should converge, we write $\series{n=0}{\infty} x_n=\limit{k\to\infty} S^k=\limit{k\to\infty}\series{n=0}{k} x_n$. If the sequence $\seq[k]{S^k}$ diverges, then we say that $\series{n=0}{\infty} x_n$ diverges.
+	\item Let $r\in\bR$. The geometric series $\series{n=0}{\infty} r^n$ converges if and only if $-1<r<1$. In particular $\series{n=0}{\infty} r^n=\frac{1}{1-r}$ given that $-1<r<1$ and the series is convergent.
+	\item A series $\series{n=0}{\infty} x_n$ converges if and only if its tails converge (i.e for $M\in\bN$. the series $\series{n=M}{\infty} x_n$ converges).
+	\item A series $\series{n=0}{\infty} x_n$ is said to be cauchy if the sequence of partial sums $\seq[k]{S^k}$ is a cauchy sequence. For every $\epsilon > 0$, there exists an $M\in\bN$ such that $\abs{\series{k=1}{m} x_n-\series{k=1}{k} x_n}<\epsilon$ whenever $m, k\ge M$. Without loss of generality, we may suppose that $K>m$. Then we may write $\abs{\series{n=m+1}{k} x_n}<\epsilon$ for all $k,m\ge M$.
+	\item A series is cauchy if and only if for every $\epsilon>0$ there is an $M\in\bN$ such that $\abs{\series{n=m+1}{k} x_n}<\epsilon$ whenever $k,m \ge M$.
+	\item Let $\series{n=0}{\infty} x_n$ be a convergent series. Then the sequence of terms $\seq{x_n}$ converges and in fact $\limtoinf x_n=0$. The converse is $\underline{\text{not}}$ true.
+	\item The summation is a linear operator.
+	\item If $x_n\ge 0$ for all $n\in\bN$, then $\series{n=0}{\infty} x_n$ converges if and only if the sequence of partial sums in bounded above.
+	\item A series $\series{n=0}{\infty} x_n$ converges absolutely if $\series{n=0}{\infty} \abs{x_n}$ converges. If a series converges, but doesn't converge absolutely, we say that it converges conditionally.
+	\item If $\series{n=0}{\infty} x_n$ converges absolutely, then it also converges conditionally. The converse is $\underline{\text{not}}$ true.
+\end{enumerate}
+
+\noindent \textbf{Series Tests}
+
+\begin{enumerate}
+	\item \textit{Comparison Test:} Let $\series{n=0}{\infty} x_n$ and $\series{n=0}{\infty} y_n$ be a pair of series such that $0\le x_n\le y_n$ for all $n\in\bN$. (1) If $\series{n=0}{\infty} y_n$ converges, then $\series{n=0}{\infty} x_n$ converges. (2) If $\series{n=0}{\infty} x_n$ diverges, then $\series{n=0}{\infty} y_n$ diverges.
+	\item \textit{P-series Test:} For $p\in\bR$, the series given by $\series{n=0}{\infty} \frac{1}{n^p}$ converges if and only if $p>1$.
+	\item \text{Ratio Test:} Let $\series{n=0}{\infty} x_n$ be a series such that $x_n\neq 0$ for every $n\in\bN$, and such that $L\coloneq\limtoinf\frac{\abs{x_{n+1}}}{\abs{x_n}}$. If (1) If $L<1$, then $\series{n=0}{\infty} x_n$ converges absolutely. (2) If $L>1$, then $\series{n=0}{\infty} x_n$ diverges. (3) If $L=1$, then the test is inconclusive.
+\end{enumerate}
+
+\noindent \textbf{Limits of Functions}
+
+\begin{enumerate}
+	\item Let $S\subset\bR$. A number $x\in\bR$ is called a cluster, or limit, point of $S$ if, for every $\epsilon>0$, the set $\paren{x-\epsilon, x+\epsilon}\cap [ S\setminus \set{x}]$ is nonempty. In other words, $x$ is a cluster point of $S$ if for every $\epsilon>0$, there is some $y\in S$ with $y\neq x$, such that $\abs{y-x}<\epsilon$, requiring that $y\in\paren{x-\epsilon, x+\epsilon}\cap [S\setminus\set{x}]$.
+	\item Let $S$ be a subset of $\bR$ and $c\in\bR$, then $c$ is a cluster point of $S$ if and only if there is a sequence $\seq{x_n}$ with $x_n\in S\setminus \set{c}$ such that $\limtoinf x_n=c$.
+	\item Let $f:S\to\bR$, with $S\subset\bR$ be non empty and suppose that $c\in\bR$ is a cluster point of $S$. Suppose $L\in\bR$ is such that, for every $\epsilon>0$, there exists some $\delta>0$ for which $\abs{f(x)-L}<\epsilon$ holds whenever $x\in S\setminus\set{c}$ satisfies $\abs{x-c}<\delta$. We then say that $f(x)$ converges to $L$ as $x\to c$, and we write $f(x)\to L$ as $x\to c$. We can this $L$ a limit of $f(x)$ as $x$ goes to $c$, and if $L$ is unique we write $\limit{x\to c}f(x)=L$. If no such $L$ exists, we say that $f$ diverges at $c$.
+	\item Let $c$ be a cluster point of $S\in\bR$ and let $f:S\to\bR$ be a function such that $f(x)$ converges as $x$ goes to $c$. Then the limit of $f(x)$ as $x\to c$ is unique.
+	\item Let $S\subset\bR$, $c$ be a cluster points of $S$, $f:S\to\bR$ be a function, and $L\in\bR$. Then $f(x)\to L$ as $x\to c$ if and only if for every sequence $\seq{x_n}$ such that $x_n\in S\setminus\set{c}$ for all $n$, and such that $\limtoinf x_n =c$, we have that the sequence $\seq{f(x_n)}$ converges to $L$.
+	\item $S\subset\bR$, $c$ be a cluster point of $S$, $f:S\to\bR$ and $L\in\bR$. Then $f(x)\to L$ as $x\to c$ if for every $\epsilon>0$, there exists some $\delta>0$ such that $\abs{f(x)-L}<\epsilon$ whenever $x\in S\setminus\set{c}$ such that $\abs{x-c}<\delta$.
+	\item Let $S\subset\bR$ and $c$ be a cluster point of $S$. Suppose $f:S\to\bR$ is a function such that the limit of $f(x)$ as $x\to c$ exists. Suppose there are two real numbers $a,b\in\bR$ with $a\le f(x)\le b$ for all $x\in S\setminus\set{c}$. Then $a\le\limit{x\to c} f(x)\le b$.
+	\item Let $S\subset\bR$ and $c$ be a cluster point of $S$. Suppose $f:S\to\bR$ and $g:S\to\bR$ are functions such that the limits as $x\to c$ both exist. If $f(x)\le g(x)$ holds for every $x\in S\setminus\set{c}$ then $\limit{x\to c} f(x)\le \limit{x\to c} g(x)$.
+	\item Limits are preserved across Addition, Subtraction, Multiplication, Division, and Absolute value provided there is no division by 0 and that both limits exist.
+	\item Let $f:S\to\bR$ be a function and let $A\subset S\subset\bR$. Define the function $f|_A=f(x)$ for $x\in A$. We call $f|_A$ the restriction of $f$ to $A$.
+	\item Let $S\subset\bR$, $c\in\bR$, and $f:S\to\bR$ be a function. Suppose $A\subset S$ is such that there is some $\alpha>0$ satisfying $[A\setminus\set{c}]\cap\paren{c-\alpha, c+\alpha}=[S\setminus\set{c}]\cap\paren{c-\alpha, c+\alpha}$. Then (1) The point $c$ is a cluster point of $A$ if and only if $c$ is a cluster point of $S$. (2) Supposing $c$ is a cluster point of $S$, then $f(x)\to L$ as $x\to c$ if and only if $f|_A\to L$ as $x\to c$.
+\end{enumerate}
+
+\noindent \textbf{Continuous Functions}
+
+\begin{enumerate}
+	\item Suppose $S\subset\bR$ and $c\in S$. We say $f:S\to\bR$ is continuous at $c$ is for every $\epsilon>0$ there is a $\delta>0$ such that whenever $x\in S$ and $\abs{x-c}<\delta$, we have $\abs{f(x)-f(c)}<\epsilon$. When $f$ is continuous at all $c\in S$, then we say that $f$ is a continuous function. If $f$ is continuous for all $c\in A$, we say $f$ is continuous on $A\subset S$. This implies that $f|_A$ is continuous, but the converse does not hold.
+	\item If for $f:S\to\bR$ and $A\subset S$, $f$ is continuous, then $f|_A$ is also continuous. The converse is false.
+	\item Consider a function $f:S\to\bR$ defined on a set $S\subset\bR$ and let $c\in S$. Then (1) If $c$ is not a cluster point of $S$, then $f$ is continuous at $c$. (2) If $c$ is a cluster point of $S$, then $f$ is continuous at $c$ if and only if the limit of $f(x)$ as $x\to c$ exists and $\limit{x\to c}f(x)=f(c)$. (3) The function $f$ is continuous at $c$ if and only if for every sequence $\seq{x_n}$ where $x_n\in S$ and $\limtoinf x_n=c$, the sequence $\seq{f(x_n)}$ converges to $f(c)$.
+	\item The third statement above allows us to quickly apply what we know about limits of sequences to continuous functions and even prove that certain functions are continuous.
+	\item The Addition, Subtraction, Multiplication, and Division of functions continuous at some $c\in S$ results in a function continuous at $c$, given that there is no division by 0.
+	\item All polynomials are continuous.
+	\item Let $A,B\subset\bR$ and $f:B\to\bR$ and $g:A\to B$ be functions. If $g$ is continuous at $c\in A$ and $f$ is continuous at $g(c)$, then $f \circ g=f(g(x)):A\to B$ is continuous at $c$.
+	\item Discontinuity at a point $c$ is true when $f$ is not continuous at $c$.
+	\item Let $f:S\to\bR$ be a function and $c\in S$. Suppose that there exits a sequence $\seq{x_n}$, $x_n\in S$ for all $n$, and $\limtoinf x_n=c$ such that $\seq{f(x_n)}$ does not converge to $f(c)$. Then $f$ is discontinuous at $c$.
+	\item \[f(x)\coloneq
+	\begin{cases}
+		1 & \text{if }x\text{ is rational} \\
+		0 & \text{if }x\text{ is irrational}
+	\end{cases}
+	\] This function is discontinuous at all $c\in\bR$.
+	\item \[f(x)\coloneq
+	\begin{cases}
+		\frac{1}{k} & \text{if }x\text{ is rational and in lowest terms} \\
+		0 & \text{if }x\text{ is irrational}
+	\end{cases}
+	\] This function is irrational $c$ but discontinuous at all rational $c$.
+	\item A point is called a removable discontinuity if we could change the definition of its function by insisting that the point takes on a different value and obtain a continuous function.
+\end{enumerate}
+
+\noindent \textbf{Extreme Value Theorem}
+
+\begin{enumerate}
+	\item $f[a,b]\to\bR$ is bounded is there exists a $B\in\bR$ such that $\abs{f(x)}\le B$ for every $x\in[a,b]$.
+	\item A continuous function on a compact interval $f[a,b]\to\bR$ is necessarily bounded.
+	\item (1) $f:S\to\bR$ achieves an absolute minimum at $c\in S$ if $f(c)\le f(x)$ for every $x\in S$. (2) $f:S\to\bR$ achieves an absolute maximum at $c\in S$ if $f(c)\ge f(x)$ for every $x\in S$.
+	\item \textit{Extreme Value Theorem:} A continuous function $f[a,b]\to\bR$ achieves both an absolute minimum and an absolute maximum on $[a,b]$.
+	\item A compact interval $[a,b]$ is essential to the validity of the EVT. Continuity of $f$ is also essential.
+\end{enumerate}
+
+\end{document}
